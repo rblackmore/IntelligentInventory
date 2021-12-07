@@ -1,8 +1,4 @@
-﻿// <copyright file="ValueObject.cs" company="Ryan Blackmore">.
-// Copyright © 2021 Ryan Blackmore. All rights Reserved.
-// </copyright>
-
-namespace ElectroCom.IntelligentInventory.SharedKernel;
+﻿namespace ElectroCom.IntelligentInventory.SharedKernel;
 
 /// <summary>
 /// See: https://enterprisecraftsmanship.com/posts/value-object-better-implementation/.
@@ -25,6 +21,23 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
   public static bool operator !=(ValueObject a, ValueObject b)
   {
     return !(a == b);
+  }
+
+  private static int CompareComponents(object obj1, object obj2)
+  {
+    if (obj1 is null && obj2 is null)
+      return 0;
+
+    if (obj1 is null)
+      return -1;
+
+    if (obj2 is null)
+      return 1;
+
+    if (obj1 is IComparable comparable1 && obj2 is IComparable comparable2)
+      return comparable1.CompareTo(comparable2);
+
+    return obj1.Equals(obj2) ? 0 : -1;
   }
 
   public override bool Equals(object? obj)
@@ -94,6 +107,12 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
   }
 
   /// <summary>
+  /// Implemented by sub classes to return all values used for equality comparisons.
+  /// </summary>
+  /// <returns>List of values to equate.</returns>
+  protected abstract IEnumerable<object> GetEqualityComponents();
+
+  /// <summary>
   /// Used to be get base type if using EF or NHibernate ORMs.
   /// </summary>
   /// <param name="obj">Object to get type of.</param>
@@ -114,28 +133,5 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
       return type.BaseType;
 
     return type;
-  }
-
-  /// <summary>
-  /// Implemented by sub classes to return all values used for equality comparisons.
-  /// </summary>
-  /// <returns>List of values to equate.</returns>
-  protected abstract IEnumerable<object> GetEqualityComponents();
-
-  private static int CompareComponents(object obj1, object obj2)
-  {
-    if (obj1 is null && obj2 is null)
-      return 0;
-
-    if (obj1 is null)
-      return -1;
-
-    if (obj2 is null)
-      return 1;
-
-    if (obj1 is IComparable comparable1 && obj2 is IComparable comparable2)
-      return comparable1.CompareTo(comparable2);
-
-    return obj1.Equals(obj2) ? 0 : -1;
   }
 }
