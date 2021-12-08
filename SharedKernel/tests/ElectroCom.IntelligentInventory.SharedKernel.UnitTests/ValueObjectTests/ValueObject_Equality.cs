@@ -40,6 +40,8 @@ public class ValueObject_Equality
     obj2.Should().BeEquivalentTo(obj1);
     (obj1 == obj2).Should().BeTrue();
     (obj1 != obj2).Should().BeFalse();
+
+    (obj1.GetHashCode() == obj2.GetHashCode()).Should().BeTrue();
   }
 
   [Fact]
@@ -55,5 +57,7 @@ public class ValueObject_Equality
     obj1.Should().NotBeRankedEquallyTo(obj2);
     (obj1 == obj2).Should().BeFalse();
     (obj1 != obj2).Should().BeTrue();
+    
+    (obj1.GetHashCode() == obj2.GetHashCode()).Should().BeFalse();
   }
 }

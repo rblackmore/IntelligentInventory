@@ -28,6 +28,9 @@ public class Entity_Equality
     entity2.Should().Equals(entity1);
     (entity1 == entity2).Should().BeTrue();
     (entity2 != entity1).Should().BeFalse();
+
+    (entity1.GetHashCode() == entity2.GetHashCode()).Should().BeTrue();
+
   }
 
   [Fact]
@@ -43,5 +46,7 @@ public class Entity_Equality
     entity2.Should().NotBeEquivalentTo(entity1);
     (entity1 == entity2).Should().BeFalse();
     (entity1 != entity2).Should().BeTrue();
+
+    (entity1.GetHashCode() == entity2.GetHashCode()).Should().BeFalse();
   }
 }
