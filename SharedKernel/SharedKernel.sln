@@ -10,6 +10,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.editorconfig = ..\.editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0D7F074A-75CB-4A1D-9EE8-FFADC6D66FF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{075C58B9-F9F9-4E3B-BCD4-EF645992A357}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectroCom.IntelligentInventory.SharedKernel.UnitTests", "tests\ElectroCom.IntelligentInventory.SharedKernel.UnitTests\ElectroCom.IntelligentInventory.SharedKernel.UnitTests.csproj", "{4D70031D-3C32-4584-95F2-7E9063A84BD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +26,17 @@ Global
 		{BB10CF9F-2995-460D-B911-173B36B6B4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB10CF9F-2995-460D-B911-173B36B6B4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB10CF9F-2995-460D-B911-173B36B6B4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D70031D-3C32-4584-95F2-7E9063A84BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D70031D-3C32-4584-95F2-7E9063A84BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D70031D-3C32-4584-95F2-7E9063A84BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D70031D-3C32-4584-95F2-7E9063A84BD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB10CF9F-2995-460D-B911-173B36B6B4E2} = {0D7F074A-75CB-4A1D-9EE8-FFADC6D66FF0}
+		{4D70031D-3C32-4584-95F2-7E9063A84BD8} = {075C58B9-F9F9-4E3B-BCD4-EF645992A357}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {12DE6EAC-B28A-4D81-B116-7915F512D3B4}

@@ -58,7 +58,7 @@ public abstract class Entity<Tid>
   {
     if (!this.cachedHashCode.HasValue)
     {
-      this.cachedHashCode = 
+      this.cachedHashCode =
         (ValueObject.GetUnproxiedType(this).ToString() + this.Id).GetHashCode();
     }
 
