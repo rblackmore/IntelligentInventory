@@ -34,8 +34,8 @@ public class ValueObject_Equality
     var obj2 = new TestValueObject("Grugg", 9001);
 
     obj1.Should().NotBeSameAs(obj2);
-    obj1.Should().Equals(obj2);
-    obj2.Should().Equals(obj1);
+    obj1.Should().Be(obj2);
+    obj2.Should().Be(obj1);
     obj1.Should().BeEquivalentTo(obj2);
     obj2.Should().BeEquivalentTo(obj1);
     (obj1 == obj2).Should().BeTrue();
