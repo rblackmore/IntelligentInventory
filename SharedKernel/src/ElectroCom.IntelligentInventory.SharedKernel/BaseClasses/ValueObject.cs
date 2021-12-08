@@ -23,23 +23,6 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
     return !(a == b);
   }
 
-  private static int CompareComponents(object obj1, object obj2)
-  {
-    if (obj1 is null && obj2 is null)
-      return 0;
-
-    if (obj1 is null)
-      return -1;
-
-    if (obj2 is null)
-      return 1;
-
-    if (obj1 is IComparable comparable1 && obj2 is IComparable comparable2)
-      return comparable1.CompareTo(comparable2);
-
-    return obj1.Equals(obj2) ? 0 : -1;
-  }
-
   public override bool Equals(object? obj)
   {
     if (obj is null)
@@ -133,5 +116,22 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
       return type.BaseType;
 
     return type;
+  }
+
+  private static int CompareComponents(object obj1, object obj2)
+  {
+    if (obj1 is null && obj2 is null)
+      return 0;
+
+    if (obj1 is null)
+      return -1;
+
+    if (obj2 is null)
+      return 1;
+
+    if (obj1 is IComparable comparable1 && obj2 is IComparable comparable2)
+      return comparable1.CompareTo(comparable2);
+
+    return obj1.Equals(obj2) ? 0 : -1;
   }
 }

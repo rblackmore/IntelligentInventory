@@ -15,8 +15,8 @@
       "systemUsingDirectivesFirst": true,
       "elementOrder": [
         "kind",
-        "constant",
         "static",
+        "constant",
         "accessibility",
         "readonly"
       ]
