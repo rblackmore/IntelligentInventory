@@ -1,4 +1,4 @@
-﻿namespace ElectroCom.IntelligentInventory.ItemBooking.Core.ItemAggregate;
+﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.ItemAggregate;
 
 using System.Collections.Generic;
 
@@ -10,10 +10,10 @@ public class SerialNumber : ValueObject
 {
   public SerialNumber(string value)
   {
-    this.Value = Guard.Against.NullOrWhiteSpace(value, nameof(value));
+    this.Value = Guard.Against.NullOrEmpty(value, nameof(value));
   }
 
-  public string Value { get; set; }
+  public string Value { get; }
 
   protected override IEnumerable<object> GetEqualityComponents()
   {
