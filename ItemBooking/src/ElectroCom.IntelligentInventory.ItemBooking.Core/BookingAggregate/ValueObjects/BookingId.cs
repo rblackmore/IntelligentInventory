@@ -8,7 +8,7 @@ using ElectroCom.IntelligentInventory.SharedKernel;
 
 public class BookingId : ValueObject
 {
-  public BookingId(Guid value)
+  private BookingId(Guid value)
   {
     this.Value = Guard.Against.Default(value, nameof(value));
   }

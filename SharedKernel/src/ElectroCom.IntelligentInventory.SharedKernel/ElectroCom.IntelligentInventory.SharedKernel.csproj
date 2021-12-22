@@ -7,13 +7,14 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>RyanBlackmore</Authors>
     <Company>Electro-Com</Company>
-    <Version>0.0.1-prerelease</Version>
+    <Version>0.0.2-prerelease</Version>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
-    <FileVersion>0.0.1.0</FileVersion>
-    <InformationalVersion>0.0.1-prerelease</InformationalVersion>
+    <FileVersion>0.0.2.0</FileVersion>
+    <InformationalVersion>0.0.2-prerelease</InformationalVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>SharedKernel Library for Electro-Com IntelligentInventory</Description>
     <SignAssembly>False</SignAssembly>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +28,7 @@
     </PackageReference>
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  <Target Name="PostBuild" AfterTargets="Pack">
     <Exec Command="nuget add $(OutputPath)\..\$(PackageId).$(PackageVersion).nupkg -source $(NUGET_LOCAL)" />
   </Target>
 </Project>
