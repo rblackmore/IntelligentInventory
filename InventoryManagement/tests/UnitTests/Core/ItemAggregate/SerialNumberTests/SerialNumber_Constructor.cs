@@ -11,7 +11,7 @@ public class SerialNumber_Constructor
   [Fact]
   public void ThrowsGivenNullOrEmptyString()
   {
-    Assert.Throws<ArgumentNullException>(() => new SerialNumber(null));
+    Assert.Throws<ArgumentNullException>(() => new SerialNumber(null!));
     Assert.Throws<ArgumentException>(() => new SerialNumber(string.Empty));
   }
 }
