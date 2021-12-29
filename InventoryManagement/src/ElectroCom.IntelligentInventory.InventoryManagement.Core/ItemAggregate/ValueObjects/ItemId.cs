@@ -24,7 +24,7 @@ public class ItemId : ValueObject
   {
     return new ItemId(Guid.NewGuid());
   }
-  
+
   public static ItemId CreateFrom(Guid guid)
   {
     return new ItemId(guid);

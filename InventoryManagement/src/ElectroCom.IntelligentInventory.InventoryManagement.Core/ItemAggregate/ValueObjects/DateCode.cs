@@ -24,7 +24,7 @@ public class DateCode : ValueObject
 public class NullDateCode : DateCode
 {
   public NullDateCode()
-    : base(string.Empty)
+    : base("None")
   {
   }
 }

@@ -10,8 +10,8 @@ public class Item : Entity<ItemId>, IAggregateRoot
   public Item(
     ItemId id,
     SerialNumber serialNumber,
-    DateCode dateCode,
-    int productId)
+    int productId,
+    DateCode dateCode = null!)
     : base(id)
   {
     this.SerialNumber = Guard.Against.Null(serialNumber, nameof(serialNumber));
@@ -30,11 +30,11 @@ public class Item : Entity<ItemId>, IAggregateRoot
 
   public SerialNumber SerialNumber { get; private set; }
 
-  public DateCode DateCode { get; private set; }
+  public DateCode DateCode { get; private set; } = new NullDateCode();
 
   public void SetSerialNumber(SerialNumber serialNumber)
   {
-    this.SerialNumber = serialNumber;
+    this.SerialNumber = Guard.Against.Null(serialNumber, nameof(serialNumber));
   }
 
   public void SetDateCode(DateCode dateCode)
