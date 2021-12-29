@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{88D3EB0F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectroCom.IntelligentInventory.InventoryManagement.Core", "src\ElectroCom.IntelligentInventory.InventoryManagement.Core\ElectroCom.IntelligentInventory.InventoryManagement.Core.csproj", "{F0DF05AF-7610-4719-B396-AADA84E3DAFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{725D6012-9478-48F7-A6DD-7A29650DBA68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{725D6012-9478-48F7-A6DD-7A29650DBA68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".scratch", ".scratch", "{23D01995-41D7-49E9-9093-94F79CD4BAE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

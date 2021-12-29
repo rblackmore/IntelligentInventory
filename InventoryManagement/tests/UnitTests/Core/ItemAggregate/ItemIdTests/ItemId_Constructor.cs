@@ -2,7 +2,7 @@
 
 using System;
 
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ItemAggregate;
+using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 
 using FluentAssertions;
 

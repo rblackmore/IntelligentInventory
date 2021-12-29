@@ -1,11 +1,10 @@
-﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.ItemAggregate;
+﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 
 using Ardalis.GuardClauses;
 
 using ElectroCom.IntelligentInventory.SharedKernel;
-using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
-public class Item : Entity<ItemId>, IAggregateRoot
+public class Item : Entity<ItemId>
 {
   public Item(
     ItemId id,

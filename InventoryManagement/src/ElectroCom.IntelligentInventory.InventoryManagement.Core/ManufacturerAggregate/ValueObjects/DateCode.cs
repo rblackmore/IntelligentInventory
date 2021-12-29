@@ -1,4 +1,4 @@
-﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.ItemAggregate;
+﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 
 using System.Collections.Generic;
 

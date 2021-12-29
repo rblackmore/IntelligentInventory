@@ -5,7 +5,7 @@ using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
 public class Manufacturer : Entity<int>, IAggregateRoot
 {
-  private readonly List<Product> products = new List<Product>();
+  private readonly List<Product> products = new ();
 
   public Manufacturer(
     int id,
