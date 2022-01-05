@@ -9,6 +9,8 @@ public class Product : Entity<int>
 {
   private readonly List<Item> items = new ();
 
+  private readonly List<Category> categories = new ();
+
   public Product(
     int productid,
     int manufacturer_id,
@@ -38,6 +40,8 @@ public class Product : Entity<int>
   public Frequency Frequency { get; private set; } = Frequency.None;
 
   public IEnumerable<Item> Items => this.items.AsReadOnly();
+
+  public IList<Category> Categories => this.categories;
 
   public void AddItem(Item newItem)
   {

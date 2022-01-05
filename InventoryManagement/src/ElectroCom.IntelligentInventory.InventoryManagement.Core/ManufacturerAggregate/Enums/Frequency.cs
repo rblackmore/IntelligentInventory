@@ -5,7 +5,6 @@ using Ardalis.SmartEnum;
 
 public class Frequency : SmartEnum<Frequency>
 {
-
   public static readonly Frequency None = new (nameof(None), 0, string.Empty);
   public static readonly Frequency LF = new (nameof(LF), 1, "Low Frequency (125Khz or 134.2Khz)");
   public static readonly Frequency HF = new (nameof(HF), 2, "High Frequency (13.56Mhz)");

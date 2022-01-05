@@ -8,9 +8,9 @@ using Xunit;
 
 public class ValueObject_Equality
 {
-  class TestValueObject : ValueObject
+  class EqualityTestValueObject : ValueObject
   {
-    public TestValueObject(string name, int score)
+    public EqualityTestValueObject(string name, int score)
     {
       this.Name = name;
       this.Score = score;
@@ -30,8 +30,8 @@ public class ValueObject_Equality
   [Fact]
   public void ReturnsTrueGivenMatchingData()
   {
-    var obj1 = new TestValueObject("Grugg", 9001);
-    var obj2 = new TestValueObject("Grugg", 9001);
+    var obj1 = new EqualityTestValueObject("Grugg", 9001);
+    var obj2 = new EqualityTestValueObject("Grugg", 9001);
 
     obj1.Should().NotBeSameAs(obj2);
     obj1.Should().Be(obj2);
@@ -47,8 +47,8 @@ public class ValueObject_Equality
   [Fact]
   public void ReturnsFalseGivenMisMatchedData()
   {
-    var obj1 = new TestValueObject("Grugg", 9001);
-    var obj2 = new TestValueObject("Grugg", 9002);
+    var obj1 = new EqualityTestValueObject("Grugg", 9001);
+    var obj2 = new EqualityTestValueObject("Grugg", 9002);
 
     obj1.Should().NotBeSameAs(obj2);
     obj1.Should().NotBe(obj2);

@@ -54,11 +54,13 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
     return this.cachedHashCode.Value;
   }
 
+  /// <inheritdoc/>
   public int CompareTo(object? obj)
   {
     return this.CompareTo(obj);
   }
 
+  /// <inheritdoc/>
   public int CompareTo(ValueObject? other)
   {
     if (other is null)
