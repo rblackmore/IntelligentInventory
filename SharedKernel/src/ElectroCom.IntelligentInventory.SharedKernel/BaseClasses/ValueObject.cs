@@ -57,7 +57,7 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
   /// <inheritdoc/>
   public int CompareTo(object? obj)
   {
-    return this.CompareTo(obj);
+    return this.CompareTo(obj as ValueObject);
   }
 
   /// <inheritdoc/>
