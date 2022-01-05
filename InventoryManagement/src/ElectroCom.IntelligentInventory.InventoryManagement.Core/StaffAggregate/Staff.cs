@@ -5,4 +5,7 @@ using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
 public class Staff : Entity<StaffId>, IAggregateRoot
 {
+  public string FirstName { get; set; }
+
+  public string LastName { get; set; }
 }
