@@ -23,7 +23,7 @@
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" Version="3.3.0" />
     <PackageReference Include="Ardalis.SmartEnum" Version="2.0.1" />
-    <PackageReference Include="ElectroCom.IntelligentInventory.SharedKernel" Version="0.0.1" />
+    <PackageReference Include="ElectroCom.IntelligentInventory.SharedKernel" Version="0.0.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -32,10 +32,6 @@
 
   <ItemGroup>
     <AdditionalFiles Include="..\..\..\stylecop.json" Link="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ItemAggregate\" />
   </ItemGroup>
   
 </Project>

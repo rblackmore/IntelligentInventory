@@ -19,7 +19,7 @@ public class StaffId : ValueObject
   {
     yield return this.Value;
   }
-  
+
   public static StaffId Create()
   {
     return new StaffId(Guid.NewGuid());
