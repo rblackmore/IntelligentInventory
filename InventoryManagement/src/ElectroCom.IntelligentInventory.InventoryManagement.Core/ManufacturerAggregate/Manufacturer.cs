@@ -1,5 +1,7 @@
 ﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 
+using Ardalis.GuardClauses;
+
 using ElectroCom.IntelligentInventory.SharedKernel;
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
@@ -22,4 +24,14 @@ public class Manufacturer : Entity<int>, IAggregateRoot
   public string Description { get; set; }
 
   public IEnumerable<Product> Products => this.products.AsReadOnly();
+
+  public void AddProduct(Product product)
+  {
+    Guard.Against.Null(product, nameof(product));
+
+    this.products.Add(product);
+  }
+
+
+
 }

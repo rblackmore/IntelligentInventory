@@ -23,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\ItemAggregate\ItemTests\" />
-    <Folder Include="Core\ItemAggregate\DateCodeTests\" />
-    <Folder Include="Core\ManufacturerAggregate\" />
+    <Folder Include="Core\ManufacturerAggregate\ItemEntity\ItemTests\" />
+    <Folder Include="Core\ManufacturerAggregate\ItemEntity\DateCodeTests\" />
+    <Folder Include="Core\ManufacturerAggregate\ProductEntity\" />
   </ItemGroup>
 
   <ItemGroup>

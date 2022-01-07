@@ -1,4 +1,4 @@
-﻿namespace UnitTests.Core.ItemAggregate.SerialNumberTests;
+﻿namespace UnitTests.Core.ManufacturerAggregate.ItemEntity.SerialNumberTests;
 
 using AutoFixture;
 
@@ -17,7 +17,7 @@ public class SerialNumber_Equality
   public void EqualGivenMatchingData()
   {
     // Arrange.
-    string serial = this.fixture.Create<string>();
+    var serial = this.fixture.Create<string>();
     // Act.
     var obj1 = new SerialNumber(serial);
     var obj2 = new SerialNumber(serial);
@@ -39,8 +39,8 @@ public class SerialNumber_Equality
   public void UnEqualGivenMisMatchedData()
   {
     // Arrange.
-    string serial1 = this.fixture.Create<string>();
-    string serial2 = this.fixture.Create<string>();
+    var serial1 = this.fixture.Create<string>();
+    var serial2 = this.fixture.Create<string>();
     // Act.
     var obj1 = new SerialNumber(serial1);
     var obj2 = new SerialNumber(serial2);

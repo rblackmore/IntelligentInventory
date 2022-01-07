@@ -1,4 +1,4 @@
-﻿namespace UnitTests.Core.ItemAggregate.ItemIdTests;
+﻿namespace UnitTests.Core.ManufacturerAggregate.ItemEntity.ItemIdTests;
 
 using System;
 

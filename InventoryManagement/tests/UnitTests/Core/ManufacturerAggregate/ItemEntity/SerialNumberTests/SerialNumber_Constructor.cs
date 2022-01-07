@@ -1,4 +1,4 @@
-﻿namespace UnitTests.Core.ItemAggregate.SerialNumberTests;
+﻿namespace UnitTests.Core.ManufacturerAggregate.ItemEntity.SerialNumberTests;
 
 using System;
 

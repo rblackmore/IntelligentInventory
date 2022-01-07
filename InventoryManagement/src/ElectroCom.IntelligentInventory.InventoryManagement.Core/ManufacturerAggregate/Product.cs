@@ -4,6 +4,7 @@ using Ardalis.GuardClauses;
 
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.Enums;
 using ElectroCom.IntelligentInventory.SharedKernel;
+using ElectroCom.IntelligentInventory.SharedKernel.Guards;
 
 public class Product : Entity<int>
 {
@@ -58,5 +59,17 @@ public class Product : Entity<int>
   public void UpdateDescription(string description)
   {
     this.Description = Guard.Against.Null(description, nameof(description));
+  }
+
+  public void AddCategories(params Category[] categories)
+  {
+    Guard.Against.Null(categories, nameof(categories));
+    Guard.Against.NegativeOrZero(categories.Count(), nameof(categories));
+    Guard.Against.AnyNull(categories, nameof(categories));
+
+    foreach (var category in categories)
+    {
+      this.categories.Add(category);
+    }
   }
 }

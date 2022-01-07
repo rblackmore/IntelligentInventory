@@ -2,12 +2,16 @@
 
 using System.Collections.Generic;
 
+using Ardalis.GuardClauses;
+
 using ElectroCom.IntelligentInventory.SharedKernel;
 
 public class Category : ValueObject
 {
   public Category(string value)
   {
+    Guard.Against.NullOrEmpty(value, nameof(value));
+
     this.Value = value;
   }
 
