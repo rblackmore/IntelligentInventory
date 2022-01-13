@@ -32,6 +32,4 @@ public class Manufacturer : Entity<int>, IAggregateRoot
     this.products.Add(product);
   }
 
-
-
 }
