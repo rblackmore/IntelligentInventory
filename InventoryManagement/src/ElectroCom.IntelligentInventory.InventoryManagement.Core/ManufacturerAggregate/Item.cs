@@ -2,6 +2,7 @@
 
 using Ardalis.GuardClauses;
 
+using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 using ElectroCom.IntelligentInventory.SharedKernel;
 
 public class Item : Entity<ItemId>

@@ -1,4 +1,4 @@
-﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.StaffAggregate;
+﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.StaffAggregate.ValueObjects;
 
 using System.Collections.Generic;
 

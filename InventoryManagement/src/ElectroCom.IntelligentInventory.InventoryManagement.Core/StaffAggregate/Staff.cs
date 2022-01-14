@@ -1,5 +1,6 @@
 ﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Core.StaffAggregate;
 
+using ElectroCom.IntelligentInventory.InventoryManagement.Core.StaffAggregate.ValueObjects;
 using ElectroCom.IntelligentInventory.SharedKernel;
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 

@@ -3,6 +3,7 @@
 using Ardalis.GuardClauses;
 
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.Enums;
+using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 using ElectroCom.IntelligentInventory.SharedKernel;
 using ElectroCom.IntelligentInventory.SharedKernel.Guards;
 
