@@ -15,6 +15,11 @@ public class ItemId : ValueObject
 
   public Guid Value { get; }
 
+  public override string ToString()
+  {
+    return this.Value.ToString();
+  }
+
   protected override IEnumerable<object> GetEqualityComponents()
   {
     yield return this.Value;

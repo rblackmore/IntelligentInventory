@@ -2,7 +2,7 @@
 
 using AutoFixture;
 
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
+using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
 using FluentAssertions;
 

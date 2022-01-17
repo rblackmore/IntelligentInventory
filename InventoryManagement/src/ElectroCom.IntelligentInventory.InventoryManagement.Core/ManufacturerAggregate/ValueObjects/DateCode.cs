@@ -15,16 +15,17 @@ public class DateCode : ValueObject
 
   public string Value { get; }
 
+  public override string ToString()
+  {
+    return this.Value;
+  }
+
   protected override IEnumerable<object> GetEqualityComponents()
   {
     yield return this.Value;
   }
-}
 
-public class NullDateCode : DateCode
-{
-  public NullDateCode()
-    : base("None")
-  {
-  }
+  // Nullable.
+  public static DateCode None() =>
+    new ("None");
 }

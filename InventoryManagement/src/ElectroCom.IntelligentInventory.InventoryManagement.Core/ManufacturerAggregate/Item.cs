@@ -11,26 +11,21 @@ public class Item : Entity<ItemId>
     ItemId id,
     SerialNumber serialNumber,
     int productId,
-    DateCode dateCode = null!)
+    DateCode dateCode)
     : base(id)
   {
     this.SerialNumber = Guard.Against.Null(serialNumber, nameof(serialNumber));
 
-    this.DateCode = dateCode ?? new NullDateCode();
-    this.Product_Id = productId;
-  }
+    this.DateCode = Guard.Against.Null(dateCode, nameof(dateCode));
 
-  public Item(ItemId id, int productid)
-    : base(id)
-  {
-    this.Product_Id = productid;
+    this.Product_Id = Guard.Against.NegativeOrZero(productId, nameof(productId));
   }
 
   public int Product_Id { get; private set; }
 
   public SerialNumber SerialNumber { get; private set; }
 
-  public DateCode DateCode { get; private set; } = new NullDateCode();
+  public DateCode DateCode { get; private set; } = DateCode.None();
 
   public void SetSerialNumber(SerialNumber serialNumber)
   {
@@ -44,6 +39,6 @@ public class Item : Entity<ItemId>
 
   public void RemoveDateCode()
   {
-    this.DateCode = new NullDateCode();
+    this.DateCode = DateCode.None();
   }
 }
