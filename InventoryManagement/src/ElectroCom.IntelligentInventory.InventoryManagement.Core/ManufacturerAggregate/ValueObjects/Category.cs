@@ -15,6 +15,16 @@ public class Category : ValueObject
 
   public string Value { get; set; }
 
+  public static explicit operator Category(string category)
+  {
+    return new Category(category);
+  }
+
+  public static implicit operator string(Category category)
+  {
+    return category.Value;
+  }
+
   protected override IEnumerable<object> GetEqualityComponents()
   {
     yield return this.Value;
