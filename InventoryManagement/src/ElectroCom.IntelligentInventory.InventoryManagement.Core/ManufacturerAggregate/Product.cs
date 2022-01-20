@@ -11,7 +11,7 @@ public class Product : Entity<int>
 {
   private readonly List<Item> items = new ();
 
-  private readonly List<Category> categories = new ();
+  private string categories = string.Empty;
 
   public Product(
     int productid,
@@ -43,7 +43,11 @@ public class Product : Entity<int>
 
   public IEnumerable<Item> Items => this.items.AsReadOnly();
 
-  public IList<Category> Categories => this.categories;
+  public CategoryList Categories
+  {
+    get { return (CategoryList) this.categories; }
+    set { this.categories = value; }
+  }
 
   public void AddItem(Item newItem)
   {
@@ -68,9 +72,6 @@ public class Product : Entity<int>
     Guard.Against.NegativeOrZero(categories.Count(), nameof(categories));
     Guard.Against.AnyNull(categories, nameof(categories));
 
-    foreach (var category in categories)
-    {
-      this.categories.Add(category);
-    }
+    this.Categories = this.Categories.AddCategories(categories);
   }
 }
