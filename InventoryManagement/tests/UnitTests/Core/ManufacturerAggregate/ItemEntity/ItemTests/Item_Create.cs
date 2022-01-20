@@ -1,7 +1,6 @@
 ﻿namespace UnitTests.Core.ManufacturerAggregate.ItemEntity.ItemTests;
 
 using System;
-using System.Threading.Tasks;
 
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;

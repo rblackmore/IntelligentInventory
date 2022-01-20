@@ -8,10 +8,8 @@ using ElectroCom.IntelligentInventory.SharedKernel;
 
 public class Category : ValueObject
 {
-  public Category(string value)
+  private Category(string value)
   {
-    Guard.Against.NullOrEmpty(value, nameof(value));
-
     this.Value = value;
   }
 
@@ -20,5 +18,12 @@ public class Category : ValueObject
   protected override IEnumerable<object> GetEqualityComponents()
   {
     yield return this.Value;
+  }
+
+  public static Category Create(string value)
+  {
+    Guard.Against.NullOrEmpty(value, nameof(value));
+
+    return new Category(value);
   }
 }
