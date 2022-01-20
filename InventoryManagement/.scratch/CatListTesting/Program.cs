@@ -11,7 +11,7 @@ product.Categories = (CategoryList)categoryString;
 
 Console.WriteLine(product.Categories);
 
-product.AddCategories(Category.Create("Power Supply"));
+product.AddCategories(new Category("Power Supply"));
 
 foreach (var cat in product.Categories)
 {

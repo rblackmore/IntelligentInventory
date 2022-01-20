@@ -8,28 +8,26 @@ using Xunit;
 
 public class CategoryList_Create
 {
-  private Category categoryReader = Category.Create("Reader");
-  private Category categoryAntenna = Category.Create("Antenna");
+  private Category[] categories =
+    new[] { new Category("Reader"), new Category("Antenna") };
 
   [Fact]
   public void CreateSuccess()
   {
-    var categories = new[] { this.categoryReader, this.categoryAntenna };
-
-    var categoryList = CategoryList.Create(categories);
+    var categoryList = new CategoryList(this.categories);
 
     Assert.NotNull(categoryList);
 
-    categoryList.Categories.Should().HaveCount(2);
+    categoryList.Count.Should().Be(2);
   }
 
   [Fact]
   public void CreateEmptySuccess()
   {
-    var list = CategoryList.Create();
+    var list = new CategoryList();
 
     Assert.NotNull(list);
 
-    list.Categories.Should().HaveCount(0);
+    list.Count.Should().Be(0);
   }
 }

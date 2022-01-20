@@ -13,13 +13,13 @@ using Xunit;
 public class CategoryList_Equality
 {
   private Category[] categories = 
-    new[] { Category.Create("Reader"), Category.Create("Antenna") };
+    new[] { new Category("Reader"), new Category("Antenna") };
 
   [Fact]
   public void Equal_Given_MatchingData()
   {
-    var obj1 = CategoryList.Create(this.categories.ToArray());
-    var obj2 = CategoryList.Create(this.categories.ToArray());
+    var obj1 = new CategoryList(this.categories.ToArray());
+    var obj2 = new CategoryList(this.categories.ToArray());
 
     (obj1 as ValueObject).Should().NotBeSameAs(obj2);
 
@@ -40,8 +40,8 @@ public class CategoryList_Equality
   [Fact]
   public void UnEqual_Given_MisMatchingData()
   {
-    var obj1 = CategoryList.Create(this.categories[0]);
-    var obj2 = CategoryList.Create(this.categories[1]);
+    var obj1 = new CategoryList(this.categories[0]);
+    var obj2 = new CategoryList(this.categories[1]);
 
     (obj1 as ValueObject).Should().NotBeSameAs(obj2);
 

@@ -45,7 +45,7 @@ public class Product : Entity<int>
 
   public CategoryList Categories
   {
-    get { return (CategoryList) this.categories; }
+    get { return (CategoryList)this.categories; }
     set { this.categories = value; }
   }
 

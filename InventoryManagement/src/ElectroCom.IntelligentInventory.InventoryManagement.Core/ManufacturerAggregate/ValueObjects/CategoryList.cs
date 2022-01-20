@@ -10,17 +10,21 @@ public class CategoryList : ValueObject, IEnumerable<Category>
 {
   private List<Category> categories;
 
-  private CategoryList(params Category[] categories)
+  public CategoryList(params Category[] categories)
   {
+    Guard.Against.Null(categories, nameof(categories));
+
     this.categories = categories.ToList();
   }
 
   public IReadOnlyList<Category> Categories => this.categories.AsReadOnly();
 
+  public int Count => this.categories.Count;
+
   public static explicit operator CategoryList(string categoryList)
   {
     List<Category> categories = categoryList.Split(';')
-      .Select(x => Category.Create(x))
+      .Select(x => new Category(x))
       .ToList();
 
     return new CategoryList(categories.ToArray());
@@ -52,13 +56,6 @@ public class CategoryList : ValueObject, IEnumerable<Category>
     list.Remove(category);
 
     return new CategoryList(list.ToArray());
-  }
-
-  public static CategoryList Create(params Category[] categories)
-  {
-    Guard.Against.Null(categories, nameof(categories));
-
-    return new CategoryList(categories);
   }
 
   public IEnumerator<Category> GetEnumerator()
