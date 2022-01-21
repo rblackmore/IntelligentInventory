@@ -1,0 +1,16 @@
+﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.Data.Config;
+
+using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+internal class ManufacturerConfiguration : IEntityTypeConfiguration<Manufacturer>
+{
+  public void Configure(EntityTypeBuilder<Manufacturer> builder)
+  {
+    builder.ToTable("Manufacturers").HasKey(x => x.Id);
+
+    builder.HasMany(x => x.Products).WithOne();
+  }
+}
