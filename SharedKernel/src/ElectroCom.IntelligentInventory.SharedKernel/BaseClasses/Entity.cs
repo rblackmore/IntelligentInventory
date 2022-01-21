@@ -2,7 +2,7 @@
 
 using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 
-public abstract class Entity<Tid>
+public abstract class Entity<Tid> : BaseEntity
 {
   private int? cachedHashCode;
 
@@ -14,8 +14,6 @@ public abstract class Entity<Tid>
   {
     this.Id = id;
   }
-
-  public List<DomainEvent> Events { get; } = new ();
 
   public virtual Tid Id { get; protected set; }
 
