@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,11 +8,11 @@
     <Authors>RyanBlackmore</Authors>
     <Company>Electro-Com</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Description>SharedKernel Library for Electro-Com IntelligentInventory</Description>
+    <Description>Core Domain Project for Intelligent Inventory Inventory Management. Mostly CRUD application.</Description>
     <SignAssembly>False</SignAssembly>
-    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <!--<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>-->
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <Version>0.0.3</Version>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,26 +20,28 @@
     <InformationalVersion>0.0.3</InformationalVersion>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" Version="3.3.0" />
-    <PackageReference Include="Ardalis.Specification" Version="6.0.1" />
-    <PackageReference Include="MediatR" Version="10.0.0" />
+    <PackageReference Include="Ardalis.SmartEnum" Version="2.0.1" />
+    <PackageReference Include="ElectroCom.IntelligentInventory.SharedKernel" Version="0.0.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <AdditionalFiles Include="..\..\..\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Specifications\" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.0" />
+    <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="ElectroCom.IntelligentInventory.SharedKernel" Version="0.0.3" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="Pack">
-    <Exec Command="nuget add $(OutputPath)\..\$(PackageId).$(PackageVersion).nupkg -source $(NUGET_LOCAL)" />
-  </Target>
   
 </Project>

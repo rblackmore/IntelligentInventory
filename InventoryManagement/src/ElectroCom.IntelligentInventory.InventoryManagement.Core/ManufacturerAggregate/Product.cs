@@ -2,6 +2,7 @@
 
 using Ardalis.GuardClauses;
 
+using ElectroCom.IntelligentInventory.InventoryManagement.Core.CategoryAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.Enums;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 using ElectroCom.IntelligentInventory.SharedKernel;
@@ -11,7 +12,7 @@ public class Product : Entity<int>
 {
   private readonly List<Item> items = new ();
 
-  private string categories = string.Empty;
+  private readonly List<Category> categories = new ();
 
   public Product(
     int productid,
@@ -41,13 +42,9 @@ public class Product : Entity<int>
 
   public Frequency Frequency { get; private set; } = Frequency.None;
 
-  public IEnumerable<Item> Items => this.items.AsReadOnly();
+  public IReadOnlyList<Item> Items => this.items.AsReadOnly();
 
-  public CategoryList Categories
-  {
-    get { return (CategoryList)this.categories; }
-    set { this.categories = value; }
-  }
+  public IReadOnlyList<Category> Categories => this.categories.AsReadOnly();
 
   public void AddItem(Item newItem)
   {
@@ -72,6 +69,6 @@ public class Product : Entity<int>
     Guard.Against.NegativeOrZero(categories.Count(), nameof(categories));
     Guard.Against.AnyNull(categories, nameof(categories));
 
-    this.Categories = this.Categories.AddCategories(categories);
+    this.categories.AddRange(categories);
   }
 }

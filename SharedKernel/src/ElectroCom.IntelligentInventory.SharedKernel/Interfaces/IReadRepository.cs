@@ -1,6 +1,8 @@
 ﻿namespace ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
-public interface IReadRepository<T>
-  where T : class, IAggregateRoot
+using Ardalis.Specification;
+
+public interface IReadRepository<T> : IReadRepositoryBase<T>
+  where T : Entity<T>, IAggregateRoot
 {
 }
