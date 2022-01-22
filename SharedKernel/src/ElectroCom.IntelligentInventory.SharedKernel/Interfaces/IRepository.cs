@@ -18,7 +18,7 @@ public interface IRepository<T> : IReadRepository<T>
   /// A task the represents the asynchronous operaiton.
   /// The task result contains the <typeparamref name="T"/>.
   /// </returns>
-  // Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
+  Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
 
   /// <summary>
   /// Updates an entity in the data store.
@@ -26,7 +26,7 @@ public interface IRepository<T> : IReadRepository<T>
   /// <param name="entity">THe Entity to update.</param>
   /// <param name="cancellationToken">Cancellation Token.</param>
   /// <returns>A task that represents the asynchrounous operation.</returns>
-  // Task UpdateAsync(T entity, CancellationToken cancellationToken = default);
+  Task UpdateAsync(T entity, CancellationToken cancellationToken = default);
 
   /// <summary>
   /// Removes an entity from the data store.
@@ -34,7 +34,7 @@ public interface IRepository<T> : IReadRepository<T>
   /// <param name="entity">The Entity to remove.</param>
   /// <param name="cancellationToken">Cancellation Token.</param>
   /// <returns>A task that represents the asynchronous operation.</returns>
-  // Task DeleteAsync(T entity, CancellationToken cancellationToken = default);
+  Task DeleteAsync(T entity, CancellationToken cancellationToken = default);
 
   /// <summary>
   /// Removes the given entities from the data store.
@@ -42,7 +42,7 @@ public interface IRepository<T> : IReadRepository<T>
   /// <param name="entities">The entities to remove.</param>
   /// <param name="cancellationToken">Cancellation token.</param>
   /// <returns>A task that represents the asynchronous operation.</returns>
-  // Task DeleteRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
+  Task DeleteRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
   /// <summary>
   /// Persists changes to the data store.
@@ -52,5 +52,5 @@ public interface IRepository<T> : IReadRepository<T>
   /// A task that represents the asynchrnous operation.
   /// The task result contains the number of entities affected.
   /// </returns>
-  // Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+  Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

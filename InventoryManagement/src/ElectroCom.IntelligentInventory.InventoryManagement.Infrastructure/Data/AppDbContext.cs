@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.CategoryAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.StaffAggregate;
-using ElectroCom.IntelligentInventory.SharedKernel;
 using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 
 using MediatR;
 
 using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext : DbContext
+public sealed class AppDbContext : DbContext
 {
   private readonly IMediator mediator;
 
@@ -40,6 +39,7 @@ public class AppDbContext : DbContext
     if (this.mediator is null)
       return result;
 
+    // Handle Domain Events.
     var entitiesWithEvents = this.ChangeTracker
       .Entries()
       .Select(e => e.Entity as BaseEntity)
