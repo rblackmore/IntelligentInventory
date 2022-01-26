@@ -13,14 +13,23 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
 
     builder.OwnsOne(x => x.ProductCode, x =>
     {
-      x.Property(p => p.Value).HasColumnName(nameof(Product.ProductCode)).HasMaxLength(50);
+      x.Property(p => p.Value)
+        .HasColumnName(nameof(Product.ProductCode))
+        .HasMaxLength(50);
     });
 
     builder.OwnsOne(x => x.Frequency, x =>
     {
-      // TODO: Figure out how to persist an Smart Enum.
+      x.Property(x => x.Value)
+        .HasColumnName("Frequency")
+        .IsRequired();
     });
 
-    builder.HasMany(x => x.Items).WithOne();
+    builder.HasMany(x => x.Items)
+      .WithOne()
+      .HasForeignKey(x => x.Product_Id);
+
+    builder.HasMany(x => x.Categories)
+      .WithMany("Products");
   }
 }

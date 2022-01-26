@@ -1,7 +1,7 @@
 ﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.Data.Config;
 
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.CategoryAggregate;
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using ElectroCom.IntelligentInventory.InventoryManagement.Core.CategoryAggregate.ValueObjects;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,7 +14,13 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
 
     builder.OwnsOne(x => x.CategoryName, x =>
     {
-      x.Property(x => x.Name).HasColumnName(nameof(CategoryName.Name)).HasMaxLength(25);
+      x.Property(x => x.Name)
+        .HasColumnName(nameof(CategoryName.Name))
+        .HasMaxLength(CategoryName.MAXIMUM)
+        .IsRequired();
+
+      x.HasIndex(x => x.Name)
+        .IsUnique();
     });
   }
 }

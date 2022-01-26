@@ -9,7 +9,7 @@ using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 public abstract class RepositoryBase<T> : IRepository<T>
-  where T : Entity<T>, IAggregateRoot
+  where T : class, IAggregateRoot
 {
   private readonly DbContext dbContext;
 

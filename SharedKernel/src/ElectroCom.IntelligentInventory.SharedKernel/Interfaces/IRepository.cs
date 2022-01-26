@@ -7,7 +7,7 @@
 /// <typeparam name="T">The type of entity being operated on by this repository.
 /// Must be type of <see cref="IAggregateRoot"/>.</typeparam>
 public interface IRepository<T> : IReadRepository<T>
-  where T : Entity<T>, IAggregateRoot
+  where T : class, IAggregateRoot
 {
   /// <summary>
   /// Adds an entity in the data store.

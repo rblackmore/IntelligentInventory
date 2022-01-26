@@ -28,6 +28,11 @@ public class Product : Entity<int>
     this.Frequency = frequency ?? Frequency.None;
   }
 
+  private Product()
+  {
+    // EF Core.
+  }
+
   public Product(int productid, int manufacturer_id)
   : base(productid)
   {

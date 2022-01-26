@@ -17,5 +17,11 @@ public class Frequency : SmartEnum<Frequency>
     this.Description = Guard.Against.Null(description, nameof(description));
   }
 
+  private Frequency()
+    : base (nameof(None), 0)
+  {
+    // EF Core.
+  }
+
   public string Description { get; set; }
 }

@@ -1,7 +1,7 @@
 ﻿namespace ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
 public interface IReadRepository<T>
-  where T : Entity<T>, IAggregateRoot
+  where T : class, IAggregateRoot
 {
   // TODO: Add Methods that accept a Specificaiton Param. (Implement Specifications first).
 

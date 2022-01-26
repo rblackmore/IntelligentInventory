@@ -11,6 +11,8 @@ internal class ManufacturerConfiguration : IEntityTypeConfiguration<Manufacturer
   {
     builder.ToTable("Manufacturers").HasKey(x => x.Id);
 
-    builder.HasMany(x => x.Products).WithOne();
+    builder.HasMany(x => x.Products)
+      .WithOne()
+      .HasForeignKey(x => x.Manufacturer_id);
   }
 }

@@ -21,6 +21,11 @@ public class Item : Entity<ItemId>
     this.Product_Id = Guard.Against.NegativeOrZero(productId, nameof(productId));
   }
 
+  private Item()
+  {
+    // EF Core.
+  }
+
   public int Product_Id { get; private set; }
 
   public SerialNumber SerialNumber { get; private set; }

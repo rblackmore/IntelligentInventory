@@ -10,13 +10,16 @@ public class Manufacturer : Entity<int>, IAggregateRoot
   private readonly List<Product> products = new ();
 
   public Manufacturer(
-    int id,
     string name,
     string description)
-    : base(id)
   {
     this.Name = name;
     this.Description = description;
+  }
+
+  private Manufacturer()
+  {
+    // EF Core.
   }
 
   public string Name { get; set; }

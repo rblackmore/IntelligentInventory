@@ -1,5 +1,6 @@
 ﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.Data;
 
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -72,6 +73,8 @@ public sealed class AppDbContext : DbContext
   {
     base.OnModelCreating(modelBuilder);
 
-    // TODO: ApplyConfigurationFrom Executing Assembly.
+    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+    modelBuilder.Ignore<DomainEvent>();
   }
 }
