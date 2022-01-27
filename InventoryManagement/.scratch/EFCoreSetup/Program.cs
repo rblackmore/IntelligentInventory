@@ -1,5 +1,7 @@
 ﻿namespace EFCoreSetup;
 
+using System.Reflection;
+
 using ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.Data;
 using ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.DependencyInjection.MSDependencyInjection;
 
@@ -30,7 +32,7 @@ public static class Program
 
           options.UseSqlite(
             @"Data Source=D:/Databases/IntelligentInventoryScratch.db;",
-            b => b.MigrationsAssembly("EFCoreSetup"));
+            b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName));
 
           options.EnableSensitiveDataLogging();
         });

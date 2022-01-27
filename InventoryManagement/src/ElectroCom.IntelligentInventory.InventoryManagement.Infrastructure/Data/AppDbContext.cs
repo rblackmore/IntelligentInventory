@@ -43,7 +43,7 @@ public sealed class AppDbContext : DbContext
     // Handle Domain Events.
     var entitiesWithEvents = this.ChangeTracker
       .Entries()
-      .Select(e => e.Entity as BaseEntity)
+      .Select(e => e.Entity as IEntity)
       .Where(e => e?.Events != null && e.Events.Any())
       .ToArray();
 

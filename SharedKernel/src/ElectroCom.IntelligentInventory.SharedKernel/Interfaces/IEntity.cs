@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public abstract class BaseEntity
+public interface IEntity
 {
-  public List<DomainEvent> Events { get; } = new ();
+  List<DomainEvent> Events { get; }
 }

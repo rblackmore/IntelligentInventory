@@ -1,8 +1,10 @@
 ﻿namespace ElectroCom.IntelligentInventory.SharedKernel;
 
+using System.Collections.Generic;
+
 using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 
-public abstract class Entity<Tid> : BaseEntity
+public abstract class Entity<Tid> : IEntity
 {
   private int? cachedHashCode;
 
@@ -16,6 +18,8 @@ public abstract class Entity<Tid> : BaseEntity
   }
 
   public virtual Tid Id { get; protected set; }
+
+  public List<DomainEvent> Events { get; } = new ();
 
   public static bool operator ==(Entity<Tid> a, Entity<Tid> b)
   {
