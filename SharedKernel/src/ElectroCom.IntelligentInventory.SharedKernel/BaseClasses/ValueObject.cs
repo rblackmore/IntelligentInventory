@@ -1,5 +1,4 @@
-﻿namespace ElectroCom.IntelligentInventory.SharedKernel;
-
+﻿namespace ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 /// <summary>
 /// See: https://enterprisecraftsmanship.com/posts/value-object-better-implementation/.
 /// </summary>
@@ -46,7 +45,7 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
         {
           unchecked
           {
-            return (current * 23) + (obj?.GetHashCode() ?? 0);
+            return current * 23 + (obj?.GetHashCode() ?? 0);
           }
         });
     }
@@ -66,8 +65,8 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
     if (other is null)
       return 1;
 
-    Type thisType = GetUnproxiedType(this);
-    Type otherType = GetUnproxiedType(other);
+    var thisType = GetUnproxiedType(this);
+    var otherType = GetUnproxiedType(other);
 
     if (thisType != otherType)
     {
@@ -77,12 +76,12 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
         StringComparison.Ordinal);
     }
 
-    object[] components = this.GetEqualityComponents().ToArray();
-    object[] otherComponents = other.GetEqualityComponents().ToArray();
+    var components = this.GetEqualityComponents().ToArray();
+    var otherComponents = other.GetEqualityComponents().ToArray();
 
-    for (int i = 0; i < components.Length; i++)
+    for (var i = 0; i < components.Length; i++)
     {
-      int comparison = CompareComponents(components[i], otherComponents[i]);
+      var comparison = CompareComponents(components[i], otherComponents[i]);
 
       if (comparison != 0)
         return comparison;
@@ -107,8 +106,8 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
     const string EFCoreProxyPrefix = "Castle.Proxies.";
     const string NHibernateProxyPostFix = "Proxy";
 
-    Type type = obj.GetType();
-    string typeString = type.ToString();
+    var type = obj.GetType();
+    var typeString = type.ToString();
 
     var isProxied =
       typeString.StartsWith(EFCoreProxyPrefix) ||

@@ -1,9 +1,7 @@
-﻿namespace ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
-using System;
+﻿namespace ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
+
+using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public interface IEntity
 {

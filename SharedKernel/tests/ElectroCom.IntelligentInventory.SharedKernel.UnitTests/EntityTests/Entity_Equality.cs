@@ -1,5 +1,7 @@
 ﻿namespace ElectroCom.IntelligentInventory.SharedKernel.UnitTests.EntityTests;
 
+using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
+
 using FluentAssertions;
 
 using Xunit;

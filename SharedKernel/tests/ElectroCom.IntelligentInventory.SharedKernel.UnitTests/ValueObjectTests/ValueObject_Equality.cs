@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 
+using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
+
 using FluentAssertions;
 
 using Xunit;

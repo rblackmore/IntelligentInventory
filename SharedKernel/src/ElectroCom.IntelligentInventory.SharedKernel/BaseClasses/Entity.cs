@@ -1,8 +1,8 @@
-﻿namespace ElectroCom.IntelligentInventory.SharedKernel;
+﻿namespace ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 
 using System.Collections.Generic;
 
-using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
+using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
 public abstract class Entity<Tid> : IEntity
 {
@@ -19,7 +19,7 @@ public abstract class Entity<Tid> : IEntity
 
   public virtual Tid Id { get; protected set; }
 
-  public List<DomainEvent> Events { get; } = new ();
+  public List<DomainEvent> Events { get; } = new();
 
   public static bool operator ==(Entity<Tid> a, Entity<Tid> b)
   {
@@ -48,8 +48,8 @@ public abstract class Entity<Tid> : IEntity
     if (ReferenceEquals(this, other))
       return true;
 
-    Type thisType = ValueObject.GetUnproxiedType(this);
-    Type otherType = ValueObject.GetUnproxiedType(other);
+    var thisType = ValueObject.GetUnproxiedType(this);
+    var otherType = ValueObject.GetUnproxiedType(other);
 
     if (thisType != otherType)
       return false;
