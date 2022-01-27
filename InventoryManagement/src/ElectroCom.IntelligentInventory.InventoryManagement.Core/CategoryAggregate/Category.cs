@@ -4,7 +4,7 @@ using Ardalis.GuardClauses;
 
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.CategoryAggregate.ValueObjects;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
-using ElectroCom.IntelligentInventory.SharedKernel;
+using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
 public class Category : Entity<int>, IAggregateRoot

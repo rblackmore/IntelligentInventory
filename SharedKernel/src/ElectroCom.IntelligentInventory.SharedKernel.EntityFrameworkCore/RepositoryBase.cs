@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
+using ElectroCom.IntelligentInventory.SharedKernel.Specifications;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -26,9 +27,23 @@ public abstract class RepositoryBase<T> : IRepository<T>
   }
 
   /// <inheritdoc/>
+  public async Task<T?> GetBySpecAsync<TSpec>(TSpec specification, CancellationToken cancellationToken = default) 
+    where TSpec : ISpecification<T>, ISingleResultSpecification
+  {
+    return await this.ApplySpecification(specification).FirstOrDefaultAsync();
+  }
+
+  /// <inheritdoc/>
   public async Task<List<T>> ListAsync(CancellationToken cancellationToken = default)
   {
     return await this.dbContext.Set<T>().ToListAsync(cancellationToken);
+  }
+
+  /// <inheritdoc/>
+  public async Task<List<T>> ListAsync<TSpec>(TSpec specification, CancellationToken cancellationToken = default)
+    where TSpec : ISpecification<T>
+  {
+    return await this.ApplySpecification(specification).ToListAsync(cancellationToken);
   }
 
   /// <inheritdoc/>
@@ -81,5 +96,10 @@ public abstract class RepositoryBase<T> : IRepository<T>
   public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
   {
     return await this.dbContext.SaveChangesAsync(cancellationToken);
+  }
+
+  protected virtual IQueryable<T> ApplySpecification(ISpecification<T> specification)
+  {
+    return specification.GetQuery(this.dbContext.Set<T>().AsQueryable());
   }
 }

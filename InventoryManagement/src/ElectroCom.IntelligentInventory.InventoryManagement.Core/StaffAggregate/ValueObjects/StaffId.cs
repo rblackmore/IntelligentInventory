@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using Ardalis.GuardClauses;
 
-using ElectroCom.IntelligentInventory.SharedKernel;
+using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 
 public class StaffId : ValueObject
 {

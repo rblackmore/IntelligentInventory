@@ -2,7 +2,7 @@
 
 using Ardalis.GuardClauses;
 
-using ElectroCom.IntelligentInventory.SharedKernel;
+using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
 public class Manufacturer : Entity<int>, IAggregateRoot

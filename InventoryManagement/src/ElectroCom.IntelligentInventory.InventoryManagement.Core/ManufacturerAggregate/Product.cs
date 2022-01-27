@@ -5,7 +5,7 @@ using Ardalis.GuardClauses;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.CategoryAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.Enums;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
-using ElectroCom.IntelligentInventory.SharedKernel;
+using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 using ElectroCom.IntelligentInventory.SharedKernel.Guards;
 
 public class Product : Entity<int>
@@ -28,15 +28,15 @@ public class Product : Entity<int>
     this.Frequency = frequency ?? Frequency.None;
   }
 
-  private Product()
-  {
-    // EF Core.
-  }
-
   public Product(int productid, int manufacturer_id)
   : base(productid)
   {
     this.Manufacturer_id = manufacturer_id;
+  }
+
+  private Product()
+  {
+    // EF Core.
   }
 
   public int Manufacturer_id { get; private set; }

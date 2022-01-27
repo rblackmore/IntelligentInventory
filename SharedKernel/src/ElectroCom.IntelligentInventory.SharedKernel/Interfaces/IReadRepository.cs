@@ -1,5 +1,7 @@
 ﻿namespace ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
+using ElectroCom.IntelligentInventory.SharedKernel.Specifications;
+
 public interface IReadRepository<T>
   where T : class, IAggregateRoot
 {
@@ -15,6 +17,30 @@ public interface IReadRepository<T>
   /// The task result contains a single matching entity of type <typeparamref name="T"/> or null if not found.</returns>
   Task<T?> GetByIdAsync<TId>(TId id, CancellationToken cancellationToken = default)
     where TId : notnull;
+
+  /// <summary>
+  /// Finds an entity of type <typeparamref name="T"/> that match the encapsulated query logic of the
+  /// <paramref name="specification"/>, from the data store.
+  /// </summary>
+  /// <typeparam name="TSpec">The thype of the encapsulated query logic.</typeparam>
+  /// <param name="specification">THe encapsulated queyr logic.</param>
+  /// <param name="cancellationToken">Cancellation TOken.</param>
+  /// <returns>A taks that represents the asynchronous operation.
+  /// The task result contains a single matching entity of type <typeparamref name="T"/> or null if not found.</returns>
+  Task<T?> GetBySpecAsync<TSpec>(TSpec specification, CancellationToken cancellationToken = default)
+    where TSpec : ISpecification<T>, ISingleResultSpecification;
+
+  /// <summary>
+  /// Finds all entitities of type <typeparamref name="T"/>, that matches the encapsulated query logic of the
+  /// <paramref name="specification"/>, from the data store.
+  /// </summary>
+  /// <typeparam name="TSpec">The type of encapsulated query logic.</typeparam>
+  /// <param name="specification">The encapsulated query logic.</param>
+  /// <param name="cancellationToken">Cancellation Token.</param>
+  /// <returns>A task that represents the asynchrounous operation.
+  /// The task result contains a <see cref="List{T}"/> that contains all entities matching the encaspulated query logic.</returns>
+  Task<List<T>> ListAsync<TSpec>(TSpec specification, CancellationToken cancellationToken = default)
+    where TSpec : ISpecification<T>;
 
   /// <summary>
   /// Finds all entities of <typeparamref name="T"/> from the data store.

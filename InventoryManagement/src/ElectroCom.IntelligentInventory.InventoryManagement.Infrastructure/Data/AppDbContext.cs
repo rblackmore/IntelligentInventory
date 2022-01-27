@@ -8,6 +8,7 @@ using ElectroCom.IntelligentInventory.InventoryManagement.Core.CategoryAggregate
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.StaffAggregate;
 using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
+using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
 using MediatR;
 
