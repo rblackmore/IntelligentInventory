@@ -1,9 +1,10 @@
 ﻿namespace ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.Data;
 
-using ElectroCom.IntelligentInventory.SharedKernel.EntityFrameworkCore;
+using Ardalis.Specification.EntityFrameworkCore;
+
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
-public class EFRepository<T> : RepositoryBase<T>
+public class EFRepository<T> : RepositoryBase<T>, IReadRepository<T>, IRepository<T>
   where T : class, IAggregateRoot
 {
   public EFRepository(AppDbContext dbContext)

@@ -2,12 +2,12 @@
 
 using System.Linq;
 
-using ElectroCom.IntelligentInventory.SharedKernel.Specifications;
+using Ardalis.Specification;
 
 public class GetManufacturerByIdSpecification : Specification<Manufacturer>, ISingleResultSpecification
 {
   public GetManufacturerByIdSpecification(int id)
   {
-    this.Where(m => m.Id == id);
+    this.Query.Where(m => m.Id == id);
   }
 }

@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
-using ElectroCom.IntelligentInventory.SharedKernel.Specifications;
 
 using Microsoft.EntityFrameworkCore;
 
