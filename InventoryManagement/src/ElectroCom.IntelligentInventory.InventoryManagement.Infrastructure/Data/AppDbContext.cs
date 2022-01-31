@@ -45,7 +45,7 @@ public sealed class AppDbContext : DbContext
     var entitiesWithEvents = this.ChangeTracker
       .Entries()
       .Select(e => e.Entity as IEntity)
-      .Where(e => e?.Events != null && e.Events.Any())
+      .Where(e => e != null && e.Events != null && e.Events.Any())
       .ToArray();
 
     foreach (var entity in entitiesWithEvents)

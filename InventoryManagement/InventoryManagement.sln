@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".scratch", ".scratch", "{23
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure", "src\ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure\ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.csproj", "{D2C4BB33-A065-4FB8-B3A2-83D558683E50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreSetup", ".scratch\EFCoreSetup\EFCoreSetup.csproj", "{8DBF712B-7CCC-40B3-8777-5ADD2AE93AA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreSetup", ".scratch\EFCoreSetup\EFCoreSetup.csproj", "{8DBF712B-7CCC-40B3-8777-5ADD2AE93AA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

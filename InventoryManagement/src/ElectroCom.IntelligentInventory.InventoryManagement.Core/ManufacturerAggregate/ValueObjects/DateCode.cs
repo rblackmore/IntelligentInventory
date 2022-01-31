@@ -15,6 +15,10 @@ public class DateCode : ValueObject
 
   public string Value { get; }
 
+  // Nullable.
+  public static DateCode None =>
+    new ("None");
+
   public override string ToString()
   {
     return this.Value;
@@ -24,8 +28,4 @@ public class DateCode : ValueObject
   {
     yield return this.Value;
   }
-
-  // Nullable.
-  public static DateCode None() =>
-    new ("None");
 }

@@ -1,4 +1,4 @@
-﻿namespace UnitTests.Core.ManufacturerAggregate.ItemEntity.SerialNumberTests;
+﻿namespace UnitTests.Core.Entities.ItemTests.SerialNumberTests;
 
 using AutoFixture;
 
@@ -8,7 +8,7 @@ using FluentAssertions;
 
 using Xunit;
 
-public class SerialNumber_Equality
+public class Equality
 {
   private readonly IFixture fixture = new Fixture();
 

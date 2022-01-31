@@ -1,4 +1,4 @@
-﻿namespace UnitTests.Core.ManufacturerAggregate.ItemEntity.ItemIdTests;
+﻿namespace UnitTests.Core.Entities.ItemTests.ItemIdTests;
 
 using System;
 
@@ -8,7 +8,7 @@ using FluentAssertions;
 
 using Xunit;
 
-public class ItemId_Equality
+public class Equality
 {
   [Fact]
   public void EqualGivenMatchingData()
@@ -21,7 +21,6 @@ public class ItemId_Equality
     var obj2 = ItemId.CreateFrom(guid);
 
     // Assert.
-
     obj1.Should().NotBeSameAs(obj2);
     obj1.Should().Be(obj2);
     obj2.Should().Be(obj1);
@@ -43,8 +42,8 @@ public class ItemId_Equality
     // Act.
     var obj1 = ItemId.CreateFrom(guid1);
     var obj2 = ItemId.CreateFrom(guid2);
-    // Assert.
 
+    // Assert.
     obj1.Should().NotBeSameAs(obj2);
     obj1.Should().NotBe(obj2);
     obj2.Should().NotBe(obj1);

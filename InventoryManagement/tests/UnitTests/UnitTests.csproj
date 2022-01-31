@@ -8,9 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="..\..\..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoFixture" Version="4.17.0" />
     <PackageReference Include="FluentAssertions" Version="6.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,12 +31,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\ManufacturerAggregate\ItemEntity\DateCodeTests\" />
-    <Folder Include="Core\ManufacturerAggregate\ProductEntity\" />
+    <Folder Include="Core\Entities\ManufacturerTests\" />
+    <Folder Include="Core\Entities\ProductTests\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ElectroCom.IntelligentInventory.InventoryManagement.Core\ElectroCom.IntelligentInventory.InventoryManagement.Core.csproj" />
+    <ProjectReference Include="..\..\src\ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure\ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

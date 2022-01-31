@@ -1,4 +1,4 @@
-﻿namespace UnitTests.Core.ManufacturerAggregate.ItemEntity.ItemTests;
+﻿namespace UnitTests.Core.Entities.ItemTests;
 
 using System;
 
@@ -9,15 +9,15 @@ using FluentAssertions;
 
 using Xunit;
 
-public class Item_Create
+public class Construction
 {
   private readonly ItemId itemId = ItemId.Create();
   private readonly SerialNumber serialNumber = new SerialNumber(Guid.NewGuid().ToString());
-  private readonly int productId = 1;
+  private readonly int productId = 7;
   private readonly DateCode dateCode = new DateCode("2322");
 
   [Fact]
-  public void CreateSuccess()
+  public void CreateSuccess_WithCorrectlyAssignedValue()
   {
     var item = new Item(this.itemId, this.serialNumber, this.productId, this.dateCode);
 
@@ -30,7 +30,7 @@ public class Item_Create
   [Theory]
   [InlineData(0)]
   [InlineData(-1)]
-  public void ThrowsException_When_PassedInvalidProductId(int invalidProductId)
+  public void Throws_ArgumentException_When_PassedInvalidProductId(int invalidProductId)
   {
     Action create = () => new Item(this.itemId, this.serialNumber, invalidProductId, this.dateCode);
 
@@ -38,7 +38,7 @@ public class Item_Create
   }
 
   [Fact]
-  public void ThrowsException_When_SerialNumberIsNull()
+  public void Throws_ArgumentNullException_When_SerialNumberIsNull()
   {
     Action create = () => new Item(this.itemId, null!, this.productId, this.dateCode);
 
@@ -46,10 +46,10 @@ public class Item_Create
   }
 
   [Fact]
-  public void ThrowsException_When_DateCodeIsNull()
+  public void AssignsDateCodeNone_When_DateCodeIsOmitted()
   {
-    Action create = () => new Item(this.itemId, this.serialNumber, this.productId, null!);
+    var item = new Item(this.itemId, this.serialNumber, this.productId);
 
-    create.Should().Throw<ArgumentNullException>();
+    item.DateCode.Should().Be(DateCode.None);
   }
 }
