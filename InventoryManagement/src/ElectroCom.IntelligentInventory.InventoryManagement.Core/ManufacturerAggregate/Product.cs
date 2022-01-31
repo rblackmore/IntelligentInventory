@@ -31,7 +31,7 @@ public class Product : Entity<int>
   public Product(int productid, int manufacturer_id)
   : base(productid)
   {
-    this.Manufacturer_id = manufacturer_id;
+    this.Manufacturer_id = Guard.Against.NegativeOrZero(manufacturer_id, nameof(manufacturer_id));
   }
 
   private Product()
