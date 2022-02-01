@@ -58,12 +58,12 @@ public class Product : Entity<int>
     this.items.Add(newItem);
   }
 
-  public void UpdateProductCode(ProductCode productCode)
+  public void SetProductCode(ProductCode productCode)
   {
     this.ProductCode = Guard.Against.Null(productCode, nameof(productCode));
   }
 
-  public void UpdateDescription(string description)
+  public void SetDescription(string description)
   {
     this.Description = Guard.Against.Null(description, nameof(description));
   }

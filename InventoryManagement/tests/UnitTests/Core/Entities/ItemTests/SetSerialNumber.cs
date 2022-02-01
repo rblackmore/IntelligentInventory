@@ -16,7 +16,7 @@ public class SetSerialNumber
   private readonly Item item = new (ItemId.Create(), new SerialNumber("ABCD"), 7);
 
   [Fact]
-  public void AssignsSerialNumberProperty()
+  public void AssignsPropertySerialNumber()
   {
     this.item.SetSerialNumber(this.serialNumber);
 

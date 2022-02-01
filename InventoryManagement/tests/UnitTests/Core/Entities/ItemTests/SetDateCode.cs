@@ -16,7 +16,7 @@ public class SetDateCode
   private readonly Item item = new (ItemId.Create(), new SerialNumber("ABCD"), 7);
 
   [Fact]
-  public void AssignsDateCodeProperty()
+  public void AssignsPropertyDateCode()
   {
     this.item.SetDateCode(this.dateCode);
 
