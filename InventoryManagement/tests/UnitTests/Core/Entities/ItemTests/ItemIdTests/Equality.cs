@@ -2,6 +2,8 @@
 
 using System;
 
+using AutoFixture.Xunit2;
+
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
 using FluentAssertions;
@@ -10,12 +12,10 @@ using Xunit;
 
 public class Equality
 {
-  [Fact]
-  public void EqualGivenMatchingData()
+  [Theory]
+  [AutoData]
+  public void Equal_GivenMatchingValue(Guid guid)
   {
-    // Arrange.
-    var guid = Guid.NewGuid();
-
     // Act.
     var obj1 = ItemId.CreateFrom(guid);
     var obj2 = ItemId.CreateFrom(guid);
@@ -32,13 +32,10 @@ public class Equality
     (obj1.GetHashCode() == obj2.GetHashCode()).Should().BeTrue();
   }
 
-  [Fact]
-  public void UnEqualGivenMisMatchedData()
+  [Theory]
+  [AutoData]
+  public void UnEqual_GivenMisMatchedValues(Guid guid1, Guid guid2)
   {
-    // Arrange.
-    var guid1 = Guid.NewGuid();
-    var guid2 = Guid.NewGuid();
-
     // Act.
     var obj1 = ItemId.CreateFrom(guid1);
     var obj2 = ItemId.CreateFrom(guid2);
@@ -56,10 +53,8 @@ public class Equality
   }
 
   [Fact]
-  public void UnEqualWhenCreatedWithCreateMethod()
+  public void UnEqual_WhenCreatingFromCreateMethod()
   {
-    // Arrange.
-
     // Act.
     var obj1 = ItemId.Create();
     var obj2 = ItemId.Create();

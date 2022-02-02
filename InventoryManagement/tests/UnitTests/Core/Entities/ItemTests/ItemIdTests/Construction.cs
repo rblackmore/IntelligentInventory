@@ -2,6 +2,8 @@
 
 using System;
 
+using AutoFixture.Xunit2;
+
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
 using FluentAssertions;
@@ -10,8 +12,6 @@ using Xunit;
 
 public class Construction
 {
-  private Guid guid = Guid.NewGuid();
-
   [Fact]
   public void CreateSuccess_WithValidGuid()
   {
@@ -23,20 +23,25 @@ public class Construction
     itemId.Value.Should().NotBe(Guid.Empty);
   }
 
-  [Fact]
-  public void CreateSuccess_AssignsValidGuid()
+  [Theory]
+  [AutoData]
+  public void CreateSuccess_AssignsValidGuid(Guid guid)
   {
     // Act.
-    var itemId = ItemId.CreateFrom(this.guid);
+    var itemId = ItemId.CreateFrom(guid);
 
     // Assert.
-    itemId.Value.Should().Be(this.guid);
+    itemId.Value.Should().Be(guid);
   }
 
   [Fact]
   public void Throws_ArgumentException_Given_DefaultOrEmptyGuid()
   {
-    Assert.Throws<ArgumentException>(() => ItemId.CreateFrom(default));
-    Assert.Throws<ArgumentException>(() => ItemId.CreateFrom(Guid.Empty));
+    // Act.
+    var createDefault = () => ItemId.CreateFrom(default);
+    var createEmpty = () => ItemId.CreateFrom(Guid.Empty);
+
+    createDefault.Should().Throw<ArgumentException>();
+    createEmpty.Should().Throw<ArgumentException>();
   }
 }

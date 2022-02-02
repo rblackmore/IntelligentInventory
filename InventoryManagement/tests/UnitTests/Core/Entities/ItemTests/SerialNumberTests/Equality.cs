@@ -1,6 +1,7 @@
 ﻿namespace UnitTests.Core.Entities.ItemTests.SerialNumberTests;
 
 using AutoFixture;
+using AutoFixture.Xunit2;
 
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
@@ -10,17 +11,13 @@ using Xunit;
 
 public class Equality
 {
-  private readonly IFixture fixture = new Fixture();
-
-
-  [Fact]
-  public void EqualGivenMatchingData()
+  [Theory]
+  [AutoData]
+  public void Equal_GivenMatchingValue(string serialNumber)
   {
-    // Arrange.
-    var serial = this.fixture.Create<string>();
     // Act.
-    var obj1 = new SerialNumber(serial);
-    var obj2 = new SerialNumber(serial);
+    var obj1 = new SerialNumber(serialNumber);
+    var obj2 = new SerialNumber(serialNumber);
 
     // Assert.
 
@@ -35,18 +32,15 @@ public class Equality
     (obj1.GetHashCode() == obj2.GetHashCode()).Should().BeTrue();
   }
 
-  [Fact]
-  public void UnEqualGivenMisMatchedData()
+  [Theory]
+  [AutoData]
+  public void UnEqualGivenMisMatchedData(string serial1, string serial2)
   {
-    // Arrange.
-    var serial1 = this.fixture.Create<string>();
-    var serial2 = this.fixture.Create<string>();
     // Act.
     var obj1 = new SerialNumber(serial1);
     var obj2 = new SerialNumber(serial2);
 
     // Assert.
-
     obj1.Should().NotBeSameAs(obj2);
     obj1.Should().NotBe(obj2);
     obj2.Should().NotBe(obj1);

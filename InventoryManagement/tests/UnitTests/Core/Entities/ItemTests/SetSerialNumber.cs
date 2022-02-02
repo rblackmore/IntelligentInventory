@@ -2,6 +2,8 @@
 
 using System;
 
+using AutoFixture.Xunit2;
+
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
@@ -11,22 +13,21 @@ using Xunit;
 
 public class SetSerialNumber
 {
-  private readonly SerialNumber serialNumber = new ("1234");
 
-  private readonly Item item = new (ItemId.Create(), new SerialNumber("ABCD"), 7);
-
-  [Fact]
-  public void AssignsPropertySerialNumber()
+  [Theory]
+  [AutoData]
+  public void AssignsPropertySerialNumber(Item item, SerialNumber serialNumber)
   {
-    this.item.SetSerialNumber(this.serialNumber);
+    item.SetSerialNumber(serialNumber);
 
-    this.item.SerialNumber.Should().Be(this.serialNumber);
+    item.SerialNumber.Should().Be(serialNumber);
   }
 
-  [Fact]
-  public void Throws_ArgumentNullException_GivenNull()
+  [Theory]
+  [AutoData]
+  public void Throws_ArgumentNullException_GivenNull(Item item)
   {
-    var setSerialNumber = () => this.item.SetSerialNumber(null!);
+    var setSerialNumber = () => item.SetSerialNumber(null!);
 
     setSerialNumber.Should().Throw<ArgumentNullException>();
   }

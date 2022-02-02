@@ -2,6 +2,8 @@
 
 using System;
 
+using AutoFixture.Xunit2;
+
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
@@ -11,22 +13,23 @@ using Xunit;
 
 public class SetDateCode
 {
-  private readonly DateCode dateCode = new DateCode("1218");
 
-  private readonly Item item = new (ItemId.Create(), new SerialNumber("ABCD"), 7);
-
-  [Fact]
-  public void AssignsPropertyDateCode()
+  [Theory]
+  [AutoData]
+  public void AssignsPropertyDateCode(Item item, DateCode dateCode)
   {
-    this.item.SetDateCode(this.dateCode);
+    // Act.
+    item.SetDateCode(dateCode);
 
-    this.item.DateCode.Should().Be(this.dateCode);
+    // Assert
+    item.DateCode.Should().Be(dateCode);
   }
 
-  [Fact]
-  public void Throws_ArgumentNullException_GivenNull()
+  [Theory]
+  [AutoData]
+  public void Throws_ArgumentNullException_GivenNull(Item item)
   {
-    var setDateCodeNull = () => this.item.SetDateCode(null!);
+    var setDateCodeNull = () => item.SetDateCode(null!);
 
     setDateCodeNull.Should().Throw<ArgumentNullException>();
   }

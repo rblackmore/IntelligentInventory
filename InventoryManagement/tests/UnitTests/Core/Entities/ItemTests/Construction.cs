@@ -1,6 +1,10 @@
 ﻿namespace UnitTests.Core.Entities.ItemTests;
 
 using System;
+using System.ComponentModel.DataAnnotations;
+
+using AutoFixture;
+using AutoFixture.Xunit2;
 
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
@@ -11,38 +15,39 @@ using Xunit;
 
 public class Construction
 {
-  private readonly ItemId itemId = ItemId.Create();
-  private readonly SerialNumber serialNumber = new SerialNumber(Guid.NewGuid().ToString());
-  private readonly int productId = 7;
-  private readonly DateCode dateCode = new DateCode("2322");
+  private readonly Fixture fixture;
 
-  [Fact]
-  public void CreateSuccess_WithCorrectlyAssignedValue()
+  private readonly ItemId itemId;
+  private readonly SerialNumber serialNumber;
+  private readonly int productId;
+  private readonly DateCode dateCode;
+
+  public Construction()
   {
-    var item = new Item(this.itemId, this.serialNumber, this.productId, this.dateCode);
+    this.fixture = new Fixture();
 
-    item.Id.Should().Be(this.itemId);
-    item.SerialNumber.Should().Be(this.serialNumber);
-    item.Product_Id.Should().Be(this.productId);
-    item.DateCode.Should().Be(this.dateCode);
+    this.itemId = this.fixture.Create<ItemId>();
+    this.serialNumber = this.fixture.Create<SerialNumber>();
+    this.productId = this.fixture.Create<int>();
+    this.dateCode = this.fixture.Create<DateCode>();
   }
 
   [Theory]
-  [InlineData(0)]
-  [InlineData(-1)]
-  public void Throws_ArgumentException_When_PassedInvalidProductId(int invalidProductId)
+  [AutoData]
+  public void CreateSuccess_WithCorrectlyAssignedValue(
+    ItemId itemId,
+    SerialNumber serialNumber,
+    int productId,
+    DateCode dateCode)
   {
-    Action create = () => new Item(this.itemId, this.serialNumber, invalidProductId, this.dateCode);
+    // Act.
+    var item = new Item(itemId, serialNumber, productId, dateCode);
 
-    create.Should().Throw<ArgumentException>();
-  }
-
-  [Fact]
-  public void Throws_ArgumentNullException_When_SerialNumberIsNull()
-  {
-    Action create = () => new Item(this.itemId, null!, this.productId, this.dateCode);
-
-    create.Should().Throw<ArgumentNullException>();
+    // Assert.
+    item.Id.Should().Be(itemId);
+    item.SerialNumber.Should().Be(serialNumber);
+    item.Product_Id.Should().Be(productId);
+    item.DateCode.Should().Be(dateCode);
   }
 
   [Fact]
@@ -51,5 +56,36 @@ public class Construction
     var item = new Item(this.itemId, this.serialNumber, this.productId);
 
     item.DateCode.Should().Be(DateCode.None);
+  }
+
+  [Theory]
+  [AutoData]
+  public void Throws_ArgumentException_When_PassedInvalidProductId([Range(-10, 0)]int invalidProductId)
+  {
+    // Arrange.
+
+    // Act.
+    var create = () => new Item(
+        this.itemId,
+        this.serialNumber,
+        invalidProductId,
+        this.dateCode);
+
+    // Assert.
+    create.Should().Throw<ArgumentException>();
+  }
+
+  [Fact]
+  public void Throws_ArgumentNullException_When_SerialNumberIsNull()
+  {
+    // Arrange
+
+    var create = () => new Item(
+      this.itemId,
+      null!,
+      this.productId,
+      this.dateCode);
+
+    create.Should().Throw<ArgumentNullException>();
   }
 }
