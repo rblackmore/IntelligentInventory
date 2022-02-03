@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>RyanBlackmore</Authors>
+    <Company>Electro-Com</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Core Domain Project for Intelligent Inventory Inventory Management. Mostly CRUD application.</Description>
+    <SignAssembly>False</SignAssembly>
+    <!--<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>-->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>0.0.4</VersionPrefix>
+    <VersionSuffix>-$([System.DateTime]::UtcNow.ToString(yyyyMMddhhmm))</VersionSuffix>
+    <Version Condition=" '$(VersionSuffix)' == '' ">$(VersionPrefix)</Version>
+    <Version Condition=" '$(VersionSuffix)' != '' ">$(VersionPrefix)$(VersionSuffix)</Version>
+    <InformationalVersion Condition=" '$(VersionSuffix)' == '' ">$(VersionPrefix)</InformationalVersion>
+    <InformationalVersion Condition=" '$(VersionSuffix)' != '' ">$(VersionPrefix)$(VersionSuffix)</InformationalVersion>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <FileVersion>$(VersionPrefix).0</FileVersion>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.0" />
+    <PackageReference Include="Ardalis.SmartEnum" Version="2.0.1" />
+    <PackageReference Include="Ardalis.Specification" Version="6.0.1" />
+    <PackageReference Include="ElectroCom.IntelligentInventory.SharedKernel.EntityFrameworkCore" Version="0.1.2-202201271139" />
+    <PackageReference Include="IntelligentInventory.SharedKernel" Version="0.1.3-202202021145" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+  
+</Project>

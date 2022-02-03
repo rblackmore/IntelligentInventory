@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectroCom.IntelligentInventory.SharedKernel", "src\ElectroCom.IntelligentInventory.SharedKernel\ElectroCom.IntelligentInventory.SharedKernel.csproj", "{BB10CF9F-2995-460D-B911-173B36B6B4E2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{06CC6397-D5A7-4679-BC86-1D00922F95DC}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
@@ -15,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0D7F074A-75C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{075C58B9-F9F9-4E3B-BCD4-EF645992A357}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectroCom.IntelligentInventory.SharedKernel.UnitTests", "tests\ElectroCom.IntelligentInventory.SharedKernel.UnitTests\ElectroCom.IntelligentInventory.SharedKernel.UnitTests.csproj", "{4D70031D-3C32-4584-95F2-7E9063A84BD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{34B11853-F907-4B07-9B4A-1A9F716C32C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntelligentInventory.SharedKernel", "src\SharedKernel\IntelligentInventory.SharedKernel.csproj", "{1DCF4E9C-E135-449D-8C83-13A6983E613C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,21 +23,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BB10CF9F-2995-460D-B911-173B36B6B4E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB10CF9F-2995-460D-B911-173B36B6B4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB10CF9F-2995-460D-B911-173B36B6B4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB10CF9F-2995-460D-B911-173B36B6B4E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D70031D-3C32-4584-95F2-7E9063A84BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D70031D-3C32-4584-95F2-7E9063A84BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D70031D-3C32-4584-95F2-7E9063A84BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D70031D-3C32-4584-95F2-7E9063A84BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B11853-F907-4B07-9B4A-1A9F716C32C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B11853-F907-4B07-9B4A-1A9F716C32C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B11853-F907-4B07-9B4A-1A9F716C32C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B11853-F907-4B07-9B4A-1A9F716C32C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DCF4E9C-E135-449D-8C83-13A6983E613C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DCF4E9C-E135-449D-8C83-13A6983E613C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DCF4E9C-E135-449D-8C83-13A6983E613C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DCF4E9C-E135-449D-8C83-13A6983E613C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{BB10CF9F-2995-460D-B911-173B36B6B4E2} = {0D7F074A-75CB-4A1D-9EE8-FFADC6D66FF0}
-		{4D70031D-3C32-4584-95F2-7E9063A84BD8} = {075C58B9-F9F9-4E3B-BCD4-EF645992A357}
+		{34B11853-F907-4B07-9B4A-1A9F716C32C0} = {075C58B9-F9F9-4E3B-BCD4-EF645992A357}
+		{1DCF4E9C-E135-449D-8C83-13A6983E613C} = {0D7F074A-75CB-4A1D-9EE8-FFADC6D66FF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {12DE6EAC-B28A-4D81-B116-7915F512D3B4}

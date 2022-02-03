@@ -39,8 +39,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ElectroCom.IntelligentInventory.InventoryManagement.Core\ElectroCom.IntelligentInventory.InventoryManagement.Core.csproj" />
-    <ProjectReference Include="..\..\src\ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure\ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\InventoryManagement.Core\InventoryManagement.Core.csproj" />
+    <ProjectReference Include="..\..\src\InventoryManagement.Infrastructure\InventoryManagement.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

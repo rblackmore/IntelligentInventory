@@ -7,11 +7,12 @@ using Ardalis.GuardClauses;
 
 using EFCoreSetup.Menu;
 
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.Specifications;
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
 using IGE.SimpleConsole;
+
+using InventoryManagement.Core.ManufacturerAggregate;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

@@ -3,10 +3,10 @@
 using AutoFixture;
 using AutoFixture.Xunit2;
 
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
-
 using FluentAssertions;
+
+using InventoryManagement.Core.ManufacturerAggregate;
+using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
 using Xunit;
 

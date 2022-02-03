@@ -6,21 +6,16 @@ using System.ComponentModel.DataAnnotations;
 using AutoFixture;
 using AutoFixture.Xunit2;
 
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.Enums;
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
-
 using FluentAssertions;
+
+using InventoryManagement.Core.ManufacturerAggregate;
+using InventoryManagement.Core.ManufacturerAggregate.Enums;
+using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
 using Xunit;
 
 public class Construction
 {
-  //private readonly int productId = 7;
-  //private readonly int manufacturerid = 9;
-  //private readonly string description = "Fancy Product";
-  //private readonly ProductCode productCode = new ("MRU102-USB");
-  //private readonly Frequency frequency = Frequency.UHF;
 
   [Theory]
   [AutoData]

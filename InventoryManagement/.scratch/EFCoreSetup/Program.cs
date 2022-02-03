@@ -2,8 +2,8 @@
 
 using System.Reflection;
 
-using ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.Data;
-using ElectroCom.IntelligentInventory.InventoryManagement.Infrastructure.DependencyInjection.MSDependencyInjection;
+using InventoryManagement.Infrastructure.Data;
+using InventoryManagement.Infrastructure.DependencyInjection.MSDependencyInjection;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

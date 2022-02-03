@@ -2,10 +2,10 @@
 
 using Xunit;
 using AutoFixture;
-using ElectroCom.IntelligentInventory.InventoryManagement.Core.ManufacturerAggregate;
 using FluentAssertions;
 using System;
 using AutoFixture.Xunit2;
+using InventoryManagement.Core.ManufacturerAggregate;
 
 public class SetDescription
 {
