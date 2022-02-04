@@ -21,7 +21,7 @@ public class CategoryName : ValueObject
       nameof(name),
       MINIMUM,
       MAXIMUM,
-      $"{nameof(name)} must have length betwee {MINIMUM} and {MAXIMUM}");
+      $"{nameof(name)} must have length between {MINIMUM} and {MAXIMUM}");
 
     this.Name = name.ToLowerInvariant();
   }

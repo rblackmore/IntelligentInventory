@@ -10,7 +10,8 @@ using InventoryManagement.Core.ManufacturerAggregate;
 
 public class Category : Entity<int>, IAggregateRoot
 {
-  public Category(CategoryName categoryName)
+  public Category(int categoryId, CategoryName categoryName)
+    : base(categoryId)
   {
     this.CategoryName = Guard.Against.Null(categoryName, nameof(categoryName));
   }

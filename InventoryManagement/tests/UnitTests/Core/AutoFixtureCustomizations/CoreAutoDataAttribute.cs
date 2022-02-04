@@ -1,0 +1,22 @@
+﻿namespace UnitTests.Core.AutoFixtureCustomizations;
+
+using AutoFixture;
+using AutoFixture.Xunit2;
+
+using UnitTests.Core.AutoFixtureCustomizations.SpecimentBuilders;
+
+public class CoreAutoDataAttribute : AutoDataAttribute
+{
+  public CoreAutoDataAttribute()
+    : base(() => Initialize())
+  {
+  }
+
+  private static IFixture Initialize()
+  {
+    var fixture = new Fixture();
+    fixture.Customizations.Add(new CategoryNameSpecimenBuilder());
+    return fixture;
+  }
+
+}
