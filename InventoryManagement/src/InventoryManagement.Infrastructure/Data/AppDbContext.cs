@@ -39,29 +39,8 @@ public sealed class AppDbContext : DbContext
   {
     var result = await base.SaveChangesAsync(cancellationToken);
 
-    if (this.mediator is null)
-      return result;
-
-    // Handle Domain Events.
-    var entitiesWithEvents = this.ChangeTracker
-      .Entries()
-      .Select(e => e.Entity as IEntity)
-      .Where(e => e != null && e.Events != null && e.Events.Any())
-      .ToArray();
-
-    foreach (var entity in entitiesWithEvents)
-    {
-      if (entity is null)
-        continue;
-
-      var events = entity.Events.ToArray();
-      entity.Events.Clear();
-
-      foreach (var domainEvent in events)
-      {
-        await this.mediator.Publish(domainEvent).ConfigureAwait(false);
-      }
-    }
+    if (this.mediator is not null)
+      await this.HandleDomainEvents(cancellationToken).ConfigureAwait(false);
 
     return result;
   }
@@ -78,5 +57,28 @@ public sealed class AppDbContext : DbContext
     modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
     modelBuilder.Ignore<DomainEvent>();
+  }
+
+  private async Task HandleDomainEvents(CancellationToken cancellationToken)
+  {
+    var entitiesWithEvents = this.ChangeTracker
+          .Entries()
+          .Select(e => e.Entity as IEntity)
+          .Where(e => e != null && e.Events != null && e.Events.Any())
+          .ToArray();
+
+    foreach (var entity in entitiesWithEvents)
+    {
+      if (entity is null)
+        continue;
+
+      var events = entity.Events.ToArray();
+      entity.Events.Clear();
+
+      foreach (var domainEvent in events)
+      {
+        await this.mediator.Publish(domainEvent, cancellationToken).ConfigureAwait(false);
+      }
+    }
   }
 }

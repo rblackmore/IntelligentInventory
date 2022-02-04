@@ -15,7 +15,9 @@ public static class IServiceCollectionExtensions
 {
   public static IServiceCollection AddIntelligentInventory(this IServiceCollection services)
   {
-    services.AddMediatR(Assembly.GetAssembly(typeof(Staff))!);
+    var coreAssembly = Assembly.GetAssembly(typeof(Staff));
+
+    services.AddMediatR(coreAssembly!);
 
     services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
     services.AddScoped(typeof(IReadRepository<>), typeof(EFRepository<>));

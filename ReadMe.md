@@ -127,7 +127,7 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@Grugg20](https://twitter.com/Grugg20) - email@email_client.com
+Your Name - [@Grugg20](https://twitter.com/Grugg20)
 
 Project Link: [https://github.com/rblackmore/IntelligentInventory](https://github.com/rblackmore/IntelligentInventory)
 
