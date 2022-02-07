@@ -26,7 +26,7 @@ public class CategoryName : ValueObject
     this.Name = name.ToLowerInvariant();
   }
 
-  public string Name { get; set; }
+  public string Name { get; private set; }
 
   protected override IEnumerable<object> GetEqualityComponents()
   {

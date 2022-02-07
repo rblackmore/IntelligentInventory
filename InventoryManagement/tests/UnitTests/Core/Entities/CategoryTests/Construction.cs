@@ -1,5 +1,9 @@
 ﻿namespace UnitTests.Core.Entities.CategoryTests;
 
+using System;
+
+using AutoFixture.Xunit2;
+
 using FluentAssertions;
 
 using InventoryManagement.Core.CategoryAggregate;
@@ -23,5 +27,16 @@ public class Construction
     // Assert.
     category.Id.Should().Be(categoryId);
     category.CategoryName.Should().Be(categoryName);
+  }
+
+  [Theory]
+  [AutoData]
+  public void Throws_ArgumentNullException_GivenNullCategoryName(int categoryId)
+  {
+    // Act.
+    var create = () => new Category(categoryId, null!);
+
+    // Assert.
+    create.Should().Throw<ArgumentNullException>();
   }
 }

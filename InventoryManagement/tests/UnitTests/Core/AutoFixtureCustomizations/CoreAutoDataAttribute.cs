@@ -8,15 +8,12 @@ using UnitTests.Core.AutoFixtureCustomizations.SpecimentBuilders;
 public class CoreAutoDataAttribute : AutoDataAttribute
 {
   public CoreAutoDataAttribute()
-    : base(() => Initialize())
+    : base(() =>
+    {
+      var fixture = new Fixture();
+      fixture.Customizations.Add(new CategoryNameSpecimenBuilder());
+      return fixture;
+    })
   {
   }
-
-  private static IFixture Initialize()
-  {
-    var fixture = new Fixture();
-    fixture.Customizations.Add(new CategoryNameSpecimenBuilder());
-    return fixture;
-  }
-
 }

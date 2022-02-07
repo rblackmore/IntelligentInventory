@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Entities\CategoryTests\CategoryNameTests\" />
     <Folder Include="Core\Entities\ManufacturerTests\" />
     <Folder Include="Core\Entities\ProductTests\FrequencyTests\" />
     <Folder Include="Core\Entities\ProductTests\ProductCodeTests\" />
