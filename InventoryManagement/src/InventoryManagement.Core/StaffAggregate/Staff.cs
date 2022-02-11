@@ -9,7 +9,8 @@ using InventoryManagement.Core.StaffAggregate.ValueObjects;
 
 public class Staff : Entity<StaffId>, IAggregateRoot
 {
-  public Staff(Name name)
+  public Staff(StaffId id, Name name)
+    : base(id)
   {
     this.Name = Guard.Against.Null(name, nameof(name));
   }

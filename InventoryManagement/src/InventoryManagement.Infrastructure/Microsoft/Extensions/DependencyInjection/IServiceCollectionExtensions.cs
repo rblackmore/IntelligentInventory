@@ -1,6 +1,8 @@
-﻿namespace InventoryManagement.Infrastructure.DependencyInjection.MSDependencyInjection;
+﻿namespace Microsoft.Extensions.DependencyInjection;
 
 using System.Reflection;
+
+using Ardalis.GuardClauses;
 
 using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
 
@@ -9,13 +11,17 @@ using InventoryManagement.Infrastructure.Data;
 
 using MediatR;
 
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 public static class IServiceCollectionExtensions
 {
-  public static IServiceCollection AddIntelligentInventory(this IServiceCollection services)
+  public static IServiceCollection AddIntelligentInventory(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsBuilder)
   {
+    Guard.Against.Null(optionsBuilder);
+
     var coreAssembly = Assembly.GetAssembly(typeof(Staff));
+
+    services.AddDbContext<AppDbContext>(optionsBuilder);
 
     services.AddMediatR(coreAssembly!);
 

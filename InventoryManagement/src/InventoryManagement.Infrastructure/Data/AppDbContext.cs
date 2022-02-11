@@ -39,8 +39,7 @@ public sealed class AppDbContext : DbContext
   {
     var result = await base.SaveChangesAsync(cancellationToken);
 
-    if (this.mediator is not null)
-      await this.HandleDomainEvents(cancellationToken).ConfigureAwait(false);
+    await this.HandleDomainEvents(cancellationToken).ConfigureAwait(false);
 
     return result;
   }
@@ -59,8 +58,11 @@ public sealed class AppDbContext : DbContext
     modelBuilder.Ignore<DomainEvent>();
   }
 
-  private async Task HandleDomainEvents(CancellationToken cancellationToken)
+  private async Task HandleDomainEvents(CancellationToken cancellationToken = default)
   {
+    if (this.mediator is null)
+      return;
+
     var entitiesWithEvents = this.ChangeTracker
           .Entries()
           .Select(e => e.Entity as IEntity)
