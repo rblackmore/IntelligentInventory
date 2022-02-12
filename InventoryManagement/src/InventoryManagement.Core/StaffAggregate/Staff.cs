@@ -15,6 +15,11 @@ public class Staff : Entity<StaffId>, IAggregateRoot
     this.Name = Guard.Against.Null(name, nameof(name));
   }
 
+  public Staff(Name name)
+    : this(StaffId.New(), name)
+  {
+  }
+
   private Staff()
   {
     // EF Core.
