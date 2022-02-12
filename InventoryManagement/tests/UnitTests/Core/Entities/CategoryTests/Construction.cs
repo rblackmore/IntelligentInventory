@@ -18,7 +18,7 @@ public class Construction
   [Theory]
   [CoreAutoData]
   public void CreateSuccess_AndAssignsValues(
-    int categoryId,
+    CategoryId categoryId,
     CategoryName categoryName)
   {
     // Act.
@@ -31,7 +31,7 @@ public class Construction
 
   [Theory]
   [AutoData]
-  public void Throws_ArgumentNullException_GivenNullCategoryName(int categoryId)
+  public void Throws_ArgumentNullException_GivenNullCategoryName(CategoryId categoryId)
   {
     // Act.
     var create = () => new Category(categoryId, null!);

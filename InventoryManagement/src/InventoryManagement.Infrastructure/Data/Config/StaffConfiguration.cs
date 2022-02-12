@@ -15,8 +15,7 @@ public class StaffConfiguration : IEntityTypeConfiguration<Staff>
     builder.Property(x => x.Id)
       .HasConversion(
         v => v.Value,
-        v => StaffId.CreateFrom(v)
-      );
+        v => StaffId.From(v));
 
     builder.OwnsOne(x => x.Name, x =>
     {

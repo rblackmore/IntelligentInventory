@@ -21,10 +21,14 @@ internal class MyEntityId : SingleValueObject<Guid, MyEntityId>
       throw new ArgumentException("Default id", nameof(this.Value));
   }
 
-  public static MyEntityId Create()
+  public static new MyEntityId New()
   {
-    return MyEntityId.From(Guid.NewGuid());
+    return From(Guid.NewGuid());
   }
+  //public static MyEntityId Create()
+  //{
+  //  return MyEntityId.From(Guid.NewGuid());
+  //}
 }
 
 public class SingleValueObject_Tests
@@ -41,7 +45,7 @@ public class SingleValueObject_Tests
   [Fact]
   public void Create_SuccessFromStatic()
   {
-    var id = MyEntityId.Create();
+    var id = MyEntityId.New();
 
     id.Value.Should().NotBe(Guid.Empty);
     id.Value.Should().NotBe(default(Guid));

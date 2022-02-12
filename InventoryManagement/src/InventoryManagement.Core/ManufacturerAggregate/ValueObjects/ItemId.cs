@@ -6,32 +6,17 @@ using Ardalis.GuardClauses;
 
 using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
 
-public class ItemId : ValueObject
+using IntelligentInventory.SharedKernel.BaseClasses;
+
+public class ItemId : SingleValueObject<Guid, ItemId>
 {
-  private ItemId(Guid value)
+  protected override void Validate()
   {
-    this.Value = Guard.Against.Default(value, nameof(value));
+    Guard.Against.Default(this.Value, nameof(this.Value));
   }
 
-  public Guid Value { get; }
-
-  public override string ToString()
+  public static new ItemId New()
   {
-    return this.Value.ToString();
-  }
-
-  protected override IEnumerable<object> GetEqualityComponents()
-  {
-    yield return this.Value;
-  }
-
-  public static ItemId Create()
-  {
-    return new ItemId(Guid.NewGuid());
-  }
-
-  public static ItemId CreateFrom(Guid guid)
-  {
-    return new ItemId(guid);
+    return From(Guid.NewGuid());
   }
 }

@@ -15,7 +15,7 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
     builder.HasKey(x => x.Id);
 
     builder.Property(x => x.Id)
-      .HasConversion(v => v.Value, v => ItemId.CreateFrom(v));
+      .HasConversion(v => v.Value, v => ItemId.From(v));
 
     builder.OwnsOne(x => x.DateCode, x =>
     {

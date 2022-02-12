@@ -16,7 +16,7 @@ public class Construction
   public void CreateSuccess_WithValidGuid()
   {
     // Act.
-    var itemId = ItemId.Create();
+    var itemId = ItemId.New();
 
     // Assert.
     itemId.Value.Should().NotBe(default(Guid));
@@ -28,7 +28,7 @@ public class Construction
   public void CreateSuccess_AssignsValidGuid(Guid guid)
   {
     // Act.
-    var itemId = ItemId.CreateFrom(guid);
+    var itemId = ItemId.From(guid);
 
     // Assert.
     itemId.Value.Should().Be(guid);
@@ -38,8 +38,8 @@ public class Construction
   public void Throws_ArgumentException_Given_DefaultOrEmptyGuid()
   {
     // Act.
-    var createDefault = () => ItemId.CreateFrom(default);
-    var createEmpty = () => ItemId.CreateFrom(Guid.Empty);
+    var createDefault = () => ItemId.From(default);
+    var createEmpty = () => ItemId.From(Guid.Empty);
 
     createDefault.Should().Throw<ArgumentException>();
     createEmpty.Should().Throw<ArgumentException>();

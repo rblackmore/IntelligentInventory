@@ -17,8 +17,8 @@ public class Equality
   public void Equal_GivenMatchingValue(Guid guid)
   {
     // Act.
-    var obj1 = ItemId.CreateFrom(guid);
-    var obj2 = ItemId.CreateFrom(guid);
+    var obj1 = ItemId.From(guid);
+    var obj2 = ItemId.From(guid);
 
     // Assert.
     obj1.Should().NotBeSameAs(obj2);
@@ -37,8 +37,8 @@ public class Equality
   public void UnEqual_GivenMisMatchedValues(Guid guid1, Guid guid2)
   {
     // Act.
-    var obj1 = ItemId.CreateFrom(guid1);
-    var obj2 = ItemId.CreateFrom(guid2);
+    var obj1 = ItemId.From(guid1);
+    var obj2 = ItemId.From(guid2);
 
     // Assert.
     obj1.Should().NotBeSameAs(obj2);
@@ -56,8 +56,8 @@ public class Equality
   public void UnEqual_WhenCreatingFromCreateMethod()
   {
     // Act.
-    var obj1 = ItemId.Create();
-    var obj2 = ItemId.Create();
+    var obj1 = ItemId.New();
+    var obj2 = ItemId.New();
 
     // Assert.
     obj1.Should().NotBeSameAs(obj2);

@@ -41,4 +41,11 @@ public abstract class SingleValueObject<TValue, TThis> : ValueObject
 
     return x;
   }
+
+  public static TThis New()
+  {
+    TThis x = Factory();
+
+    return x;
+  }
 }

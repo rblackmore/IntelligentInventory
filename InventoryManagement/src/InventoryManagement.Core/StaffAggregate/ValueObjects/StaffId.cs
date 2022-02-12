@@ -1,32 +1,18 @@
 ﻿namespace InventoryManagement.Core.StaffAggregate.ValueObjects;
 
-using System.Collections.Generic;
-
 using Ardalis.GuardClauses;
 
-using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
+using IntelligentInventory.SharedKernel.BaseClasses;
 
-public class StaffId : ValueObject
+public class StaffId : SingleValueObject<Guid, StaffId>
 {
-  private StaffId(Guid value)
+  protected override void Validate()
   {
-    this.Value = Guard.Against.Default(value, nameof(value));
+    this.Value = Guard.Against.Default(this.Value, nameof(this.Value));
   }
 
-  public Guid Value { get; }
-
-  protected override IEnumerable<object> GetEqualityComponents()
+  public static new StaffId New()
   {
-    yield return this.Value;
-  }
-
-  public static StaffId Create()
-  {
-    return new StaffId(Guid.NewGuid());
-  }
-
-  public static StaffId CreateFrom(Guid value)
-  {
-    return new StaffId(value);
+    return From(Guid.NewGuid());
   }
 }
