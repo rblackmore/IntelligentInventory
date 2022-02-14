@@ -12,6 +12,8 @@ using InventoryManagement.Core.StaffAggregate.ValueObjects;
 
 using Microsoft.AspNetCore.Mvc;
 
+using Swashbuckle.AspNetCore.Annotations;
+
 public class Delete : EndpointBaseAsync
   .WithRequest<Guid>
   .WithActionResult
@@ -24,15 +26,20 @@ public class Delete : EndpointBaseAsync
   }
 
   [HttpDelete("staff/{id}")]
+  [SwaggerOperation(
+    Summary = "Delete Staff by Id",
+    Description = "Delete Staff by Id",
+    OperationId = "Staff.Delete",
+    Tags = new[] { "StaffEndpoint" })]
   public override async Task<ActionResult> HandleAsync([FromRoute] Guid id, CancellationToken cancellationToken = default)
   {
     var staff = await this.repository.GetByIdAsync(StaffId.From(id), cancellationToken);
 
     if (staff is null)
-      return NotFound();
+      return this.NotFound();
 
     await this.repository.DeleteAsync(staff);
 
-    return NoContent();
+    return this.NoContent();
   }
 }

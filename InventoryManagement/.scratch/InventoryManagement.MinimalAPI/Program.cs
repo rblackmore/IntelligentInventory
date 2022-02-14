@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(options => options.EnableAnnotations());
 
 builder.Services.AddIntelligentInventory(dbContextOptions =>
 {
@@ -20,9 +22,9 @@ builder.Services.AddIntelligentInventory(dbContextOptions =>
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
-
 app.UseAuthorization();
+
+app.UseHttpsRedirection();
 
 app.MapControllers();
 

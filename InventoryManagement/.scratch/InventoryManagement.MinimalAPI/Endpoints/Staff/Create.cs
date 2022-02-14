@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 
 using Ardalis.ApiEndpoints;
 
-using Microsoft.AspNetCore.Mvc;
+using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
+
 using InventoryManagement.Core.StaffAggregate;
 using InventoryManagement.Core.StaffAggregate.ValueObjects;
-using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
-using InventoryManagement.MinimalAPI.Attributes;
+
+using Microsoft.AspNetCore.Mvc;
+
+using Swashbuckle.AspNetCore.Annotations;
 
 public class Create : EndpointBaseAsync
   .WithRequest<CreateRequest>
@@ -23,13 +26,18 @@ public class Create : EndpointBaseAsync
   }
 
   [HttpPost("staff")]
+  [SwaggerOperation(
+    Summary = "Create New Staff",
+    Description = "Create New Staff",
+    OperationId = "Staff.Create",
+    Tags = new[] { "StaffEndpoint" })]
   public override async Task<ActionResult<CreateResponse>> HandleAsync(CreateRequest request, CancellationToken cancellationToken = default)
   {
     var staff = request.ToDomain();
 
     await this.repository.AddAsync(staff);
 
-    return Created(staff.Id.Value.ToString(), CreateResponse.FromDomain(staff));
+    return this.Created(staff.Id.Value.ToString(), CreateResponse.FromDomain(staff));
   }
 }
 

@@ -13,6 +13,7 @@ using InventoryManagement.Core.StaffAggregate.ValueObjects;
 
 using Microsoft.AspNetCore.Mvc;
 
+using Swashbuckle.AspNetCore.Annotations;
 
 public class GetById : EndpointBaseAsync
   .WithRequest<Guid>
@@ -26,14 +27,19 @@ public class GetById : EndpointBaseAsync
   }
 
   [HttpGet("staff/{id:guid}")]
+  [SwaggerOperation(
+    Summary = "Get Staff by Id",
+    Description = "Get Staff by Id",
+    OperationId = "Staff.GetById",
+    Tags = new[] { "StaffEndpoint" })]
   public override async Task<ActionResult<GetByIdResult>> HandleAsync([FromRoute] Guid id, CancellationToken cancellationToken = default)
   {
     var staff = await this.repository.GetByIdAsync(StaffId.From(id), cancellationToken);
 
     if (staff is null)
-      return NotFound();
+      return this.NotFound();
 
-    return Ok(GetByIdResult.FromDomain(staff));
+    return this.Ok(GetByIdResult.FromDomain(staff));
   }
 }
 

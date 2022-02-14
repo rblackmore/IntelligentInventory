@@ -13,6 +13,8 @@ using InventoryManagement.MinimalAPI.Attributes;
 
 using Microsoft.AspNetCore.Mvc;
 
+using Swashbuckle.AspNetCore.Annotations;
+
 public class Update : EndpointBaseAsync
   .WithRequest<UpdateRequest>
   .WithActionResult<UpdateResponse>
@@ -25,6 +27,11 @@ public class Update : EndpointBaseAsync
   }
 
   [HttpPut("staff/{id:guid}")]
+  [SwaggerOperation(
+    Summary = "Update Staff",
+    Description = "Update Staff",
+    OperationId = "Staff.Update",
+    Tags = new[] { "StaffEndpoint" })]
   public override async Task<ActionResult<UpdateResponse>> HandleAsync([FromMultiSource] UpdateRequest request, CancellationToken cancellationToken = default)
   {
     var staff = await this.repository.GetByIdAsync(StaffId.From(request.id));
