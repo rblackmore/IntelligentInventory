@@ -2,7 +2,7 @@
 
 using Ardalis.Specification.EntityFrameworkCore;
 
-using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
+using IntelligentInventory.SharedKernel.Interfaces;
 
 public class EFRepository<T> : RepositoryBase<T>, IReadRepository<T>, IRepository<T>
   where T : class, IAggregateRoot

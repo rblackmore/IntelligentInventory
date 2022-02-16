@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "InventoryManagement.EF.Console": {
+    "InventoryManagement.MinimalAPI": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

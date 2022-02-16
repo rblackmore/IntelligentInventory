@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using Ardalis.ApiEndpoints;
 
-using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
+using IntelligentInventory.SharedKernel.Interfaces;
 
 using InventoryManagement.Core.StaffAggregate;
 using InventoryManagement.Core.StaffAggregate.ValueObjects;

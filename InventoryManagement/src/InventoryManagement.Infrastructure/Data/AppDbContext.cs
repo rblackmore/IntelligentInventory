@@ -4,8 +4,8 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
-using ElectroCom.IntelligentInventory.SharedKernel.Interfaces;
+using IntelligentInventory.SharedKernel.BaseClasses;
+using IntelligentInventory.SharedKernel.Interfaces;
 
 using InventoryManagement.Core.CategoryAggregate;
 using InventoryManagement.Core.ManufacturerAggregate;

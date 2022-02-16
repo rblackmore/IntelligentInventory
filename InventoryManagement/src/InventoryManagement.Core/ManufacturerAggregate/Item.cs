@@ -2,7 +2,7 @@
 
 using Ardalis.GuardClauses;
 
-using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
+using IntelligentInventory.SharedKernel.BaseClasses;
 
 using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 

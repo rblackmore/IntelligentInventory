@@ -2,8 +2,8 @@
 
 using Ardalis.GuardClauses;
 
-using ElectroCom.IntelligentInventory.SharedKernel.BaseClasses;
-using ElectroCom.IntelligentInventory.SharedKernel.Guards;
+using IntelligentInventory.SharedKernel.BaseClasses;
+using IntelligentInventory.SharedKernel.Guards;
 
 using InventoryManagement.Core.CategoryAggregate;
 using InventoryManagement.Core.ManufacturerAggregate.Enums;

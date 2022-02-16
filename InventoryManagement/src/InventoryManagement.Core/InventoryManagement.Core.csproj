@@ -29,8 +29,7 @@
     <PackageReference Include="Ardalis.GuardClauses" Version="4.0.0" />
     <PackageReference Include="Ardalis.SmartEnum" Version="2.0.1" />
     <PackageReference Include="Ardalis.Specification" Version="6.0.1" />
-    <PackageReference Include="ElectroCom.IntelligentInventory.SharedKernel.EntityFrameworkCore" Version="0.1.2-202201271139" />
-    <PackageReference Include="IntelligentInventory.SharedKernel" Version="0.1.3-202202120257" />
+    <PackageReference Include="IntelligentInventory.SharedKernel" Version="0.1.3-202202160127" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
