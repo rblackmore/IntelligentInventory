@@ -9,30 +9,30 @@ using InventoryManagement.Core.CategoryAggregate;
 using InventoryManagement.Core.ManufacturerAggregate.Enums;
 using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
-public class Product : Entity<int>
+public class Product : Entity<ProductId>
 {
   private readonly List<Item> items = new();
 
   private readonly List<Category> categories = new();
 
   public Product(
-    int productid,
-    int manufacturer_id,
+    ProductId productid,
+    ManufacturerId manufacturer_id,
     string description,
     ProductCode productCode,
     Frequency frequency = null!)
     : base(productid)
   {
-    this.Manufacturer_id = Guard.Against.NegativeOrZero(manufacturer_id, nameof(manufacturer_id));
+    this.Manufacturer_id = Guard.Against.Null(manufacturer_id, nameof(manufacturer_id));
     this.Description = Guard.Against.Null(description, nameof(description));
     this.ProductCode = Guard.Against.Null(productCode, nameof(productCode));
     this.Frequency = frequency ?? Frequency.None;
   }
 
-  public Product(int productid, int manufacturer_id)
+  public Product(ProductId productid, ManufacturerId manufacturer_id)
   : base(productid)
   {
-    this.Manufacturer_id = Guard.Against.NegativeOrZero(manufacturer_id, nameof(manufacturer_id));
+    this.Manufacturer_id = Guard.Against.Null(manufacturer_id, nameof(manufacturer_id));
   }
 
   private Product()
@@ -40,7 +40,7 @@ public class Product : Entity<int>
     // EF Core.
   }
 
-  public int Manufacturer_id { get; private set; }
+  public ManufacturerId Manufacturer_id { get; private set; }
 
   public string Description { get; private set; }
 

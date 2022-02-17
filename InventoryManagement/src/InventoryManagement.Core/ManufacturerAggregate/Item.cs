@@ -11,7 +11,7 @@ public class Item : Entity<ItemId>
   public Item(
     ItemId id,
     SerialNumber serialNumber,
-    int productId,
+    ProductId productId,
     DateCode dateCode = null!)
     : base(id)
   {
@@ -19,7 +19,7 @@ public class Item : Entity<ItemId>
 
     this.DateCode = dateCode ?? DateCode.None;
 
-    this.Product_Id = Guard.Against.NegativeOrZero(productId, nameof(productId));
+    this.Product_Id = Guard.Against.Null(productId, nameof(productId));
   }
 
   private Item()
@@ -27,7 +27,7 @@ public class Item : Entity<ItemId>
     // EF Core.
   }
 
-  public int Product_Id { get; private set; }
+  public ProductId Product_Id { get; private set; }
 
   public SerialNumber SerialNumber { get; private set; }
 

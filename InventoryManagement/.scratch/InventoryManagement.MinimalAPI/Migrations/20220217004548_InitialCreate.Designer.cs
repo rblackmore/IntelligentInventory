@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventoryManagement.MinimalAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220212032244_InitialCreate")]
+    [Migration("20220217004548_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,10 +67,7 @@ namespace InventoryManagement.MinimalAPI.Migrations
             modelBuilder.Entity("InventoryManagement.Core.ManufacturerAggregate.Manufacturer", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -88,10 +85,7 @@ namespace InventoryManagement.MinimalAPI.Migrations
             modelBuilder.Entity("InventoryManagement.Core.ManufacturerAggregate.Product", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
                         .IsRequired()

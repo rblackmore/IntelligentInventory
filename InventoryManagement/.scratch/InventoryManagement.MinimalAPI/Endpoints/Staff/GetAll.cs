@@ -15,7 +15,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 public class GetAll : EndpointBaseAsync
   .WithoutRequest
-  .WithResult<List<GetAllStaffResponse>>
+  .WithResult<List<GetAllStaffDTO>>
 {
   private readonly IReadRepository<Staff> repository;
 
@@ -30,17 +30,17 @@ public class GetAll : EndpointBaseAsync
     Description = "Get all Staff",
     OperationId = "Staff.GetAll",
     Tags = new[] { "StaffEndpoint" })]
-  public override async Task<List<GetAllStaffResponse>> HandleAsync(CancellationToken cancellationToken = default)
+  public override async Task<List<GetAllStaffDTO>> HandleAsync(CancellationToken cancellationToken = default)
   {
     var staff = await this.repository.ListAsync(cancellationToken);
 
-    var response = staff.Select(s => GetAllStaffResponse.FromDomain(s));
+    var response = staff.Select(s => GetAllStaffDTO.FromDomain(s));
 
     return response.ToList();
   }
 }
 
-public class GetAllStaffResponse
+public class GetAllStaffDTO
 {
   public Guid Id { get; set; }
 
@@ -48,9 +48,9 @@ public class GetAllStaffResponse
 
   public string LastName { get; set; }
 
-  public static GetAllStaffResponse FromDomain(Staff staff)
+  public static GetAllStaffDTO FromDomain(Staff staff)
   {
-    return new GetAllStaffResponse
+    return new GetAllStaffDTO
     {
       Id = staff.Id.Value,
       FirstName = staff.Name.FirstName,

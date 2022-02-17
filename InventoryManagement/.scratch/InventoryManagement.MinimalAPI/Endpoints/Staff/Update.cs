@@ -41,7 +41,7 @@ public class Update : EndpointBaseAsync
 
     staff.Name = new Name(request.UpdateStaff.FirstName, request.UpdateStaff.LastName);
 
-    await this.repository.UpdateAsync(staff);
+    await this.repository.SaveChangesAsync();
 
     return Ok(UpdateResponse.FromDomain(staff));
   }

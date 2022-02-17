@@ -1,6 +1,7 @@
 ﻿namespace InventoryManagement.Infrastructure.Data.Config;
 
 using InventoryManagement.Core.ManufacturerAggregate;
+using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,5 +15,8 @@ internal class ManufacturerConfiguration : IEntityTypeConfiguration<Manufacturer
     builder.HasMany(x => x.Products)
       .WithOne()
       .HasForeignKey(x => x.Manufacturer_id);
+
+    builder.Property(x => x.Id)
+      .HasConversion(v => v.Value, v => ManufacturerId.From(v));
   }
 }

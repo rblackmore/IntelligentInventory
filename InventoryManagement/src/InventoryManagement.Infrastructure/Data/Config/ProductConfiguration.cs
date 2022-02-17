@@ -1,6 +1,7 @@
 ﻿namespace InventoryManagement.Infrastructure.Data.Config;
 
 using InventoryManagement.Core.ManufacturerAggregate;
+using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -10,6 +11,9 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
   public void Configure(EntityTypeBuilder<Product> builder)
   {
     builder.ToTable("Products").HasKey(x => x.Id);
+
+    builder.Property(x => x.Id)
+      .HasConversion(v => v.Value, v => ProductId.From(v));
 
     builder.OwnsOne(x => x.ProductCode, x =>
     {

@@ -5,7 +5,9 @@ using Ardalis.GuardClauses;
 using IntelligentInventory.SharedKernel.BaseClasses;
 using IntelligentInventory.SharedKernel.Interfaces;
 
-public class Manufacturer : Entity<int>, IAggregateRoot
+using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+
+public class Manufacturer : Entity<ManufacturerId>, IAggregateRoot
 {
   private readonly List<Product> products = new();
 

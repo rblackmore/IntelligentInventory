@@ -19,7 +19,7 @@ public class Construction
 
   private readonly ItemId itemId;
   private readonly SerialNumber serialNumber;
-  private readonly int productId;
+  private readonly ProductId productId;
   private readonly DateCode dateCode;
 
   public Construction()
@@ -28,7 +28,7 @@ public class Construction
 
     this.itemId = this.fixture.Create<ItemId>();
     this.serialNumber = this.fixture.Create<SerialNumber>();
-    this.productId = this.fixture.Create<int>();
+    this.productId = this.fixture.Create<ProductId>();
     this.dateCode = this.fixture.Create<DateCode>();
   }
 
@@ -37,7 +37,7 @@ public class Construction
   public void CreateSuccess_WithCorrectlyAssignedValue(
     ItemId itemId,
     SerialNumber serialNumber,
-    int productId,
+    ProductId productId,
     DateCode dateCode)
   {
     // Act.
@@ -68,7 +68,7 @@ public class Construction
     var create = () => new Item(
         this.itemId,
         this.serialNumber,
-        invalidProductId,
+        ProductId.From(invalidProductId),
         this.dateCode);
 
     // Assert.

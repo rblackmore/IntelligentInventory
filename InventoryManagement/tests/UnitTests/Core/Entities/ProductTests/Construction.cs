@@ -20,8 +20,8 @@ public class Construction
   [Theory]
   [AutoData]
   public void CreateSuccess_AndAssignsValues(
-    int productId,
-    int manufacturerId,
+    ProductId productId,
+    ManufacturerId manufacturerId,
     string description,
     ProductCode productCode)
   {
@@ -49,8 +49,8 @@ public class Construction
   [Theory]
   [AutoData]
   public void CreateSuccess_FrequencySetToNone_WhenNotProvided(
-    int productId,
-    int manufacturerId,
+    ProductId productId,
+    ManufacturerId manufacturerId,
     string description,
     ProductCode productCode)
   {
@@ -74,8 +74,8 @@ public class Construction
   [Theory]
   [AutoData]
   public void CreateSuccess_AndAssigns_ProductId_ManufacturerId(
-    int productId,
-    int manufacturerId)
+    ProductId productId,
+    ManufacturerId manufacturerId)
   {
     // Act.
     var product = new Product(productId, manufacturerId);
@@ -93,7 +93,7 @@ public class Construction
     // Arrange.
     var fixture = new Fixture();
 
-    var productId = fixture.Create<int>();
+    var productId = fixture.Create<ProductId>();
     var description = fixture.Create<string>();
     var productCode = fixture.Create<ProductCode>();
     var frequency = Frequency.None;
@@ -101,14 +101,14 @@ public class Construction
     // Act.
     var createFull = () => new Product(
       productId,
-      invalidManId,
+      ManufacturerId.From(invalidManId),
       description,
       productCode,
       frequency);
 
     var createMinimum = () => new Product(
       productId,
-      invalidManId);
+      ManufacturerId.From(invalidManId));
 
     // Assert.
     createFull.Should().Throw<ArgumentException>();
@@ -118,8 +118,8 @@ public class Construction
   [Theory]
   [AutoData]
   public void Throws_ArgumentNullException_GivenNullValues(
-    int productId,
-    int manufacturerId,
+    ProductId productId,
+    ManufacturerId manufacturerId,
     string description,
     ProductCode productCode)
   {
