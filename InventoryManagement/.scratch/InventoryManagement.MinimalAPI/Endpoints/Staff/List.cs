@@ -13,13 +13,13 @@ using Microsoft.AspNetCore.Mvc;
 
 using Swashbuckle.AspNetCore.Annotations;
 
-public class GetAll : EndpointBaseAsync
+public class List : EndpointBaseAsync
   .WithoutRequest
   .WithResult<List<GetAllStaffDTO>>
 {
   private readonly IReadRepository<Staff> repository;
 
-  public GetAll(IReadRepository<Staff> repository)
+  public List(IReadRepository<Staff> repository)
   {
     this.repository = repository;
   }

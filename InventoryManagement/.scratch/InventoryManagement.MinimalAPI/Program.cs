@@ -22,6 +22,8 @@ builder.Services.AddIntelligentInventory(dbContextOptions =>
 
 var app = builder.Build();
 
+app.UseRouting();
+
 app.UseAuthorization();
 
 app.UseHttpsRedirection();
