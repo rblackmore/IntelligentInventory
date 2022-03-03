@@ -25,7 +25,7 @@ public class Create : EndpointBaseAsync
     this.repository = repository;
   }
 
-  [HttpPost("staff")]
+  [HttpPost("api/staff")]
   [SwaggerOperation(
     Summary = "Create New Staff",
     Description = "Create New Staff",

@@ -16,9 +16,14 @@ public class Category : Entity<CategoryId>, IAggregateRoot
     this.CategoryName = Guard.Against.Null(categoryName, nameof(categoryName));
   }
 
+  public Category(CategoryName categoryName)
+  {
+    this.CategoryName = Guard.Against.Null(categoryName, nameof(categoryName));
+  }
+
   private Category()
   {
-    // EF Core.
+    // EF.
   }
 
   public CategoryName CategoryName { get; private set; }

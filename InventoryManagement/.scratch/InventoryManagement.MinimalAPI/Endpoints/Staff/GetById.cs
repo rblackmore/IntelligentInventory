@@ -26,7 +26,7 @@ public class GetById : EndpointBaseAsync
     this.repository = repository;
   }
 
-  [HttpGet("staff/{id:guid}")]
+  [HttpGet("api/staff/{id:guid}")]
   [SwaggerOperation(
     Summary = "Get Staff by Id",
     Description = "Get Staff by Id",

@@ -1,39 +1,15 @@
-﻿using System.Reflection;
-
-using Microsoft.EntityFrameworkCore;
+﻿// STOP, THIS IS THE WRONG PROGRAM
+using InventoryManagement.MinimalAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+// STOP, THIS IS THE WRONG PROGRAM
+builder.ConfigureBuilder();
 
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddSwaggerGen(options => options.EnableAnnotations());
-
-builder.Services.AddIntelligentInventory(dbContextOptions =>
-{
-  var connString = builder.Configuration.GetConnectionString("DefaultConnection");
-  var migrationAssembly = Assembly.GetExecutingAssembly();
-
-  dbContextOptions.UseSqlServer(
-    connString,
-    sqlOptons => sqlOptons.MigrationsAssembly(migrationAssembly.FullName));
-});
-
+// STOP, THIS IS THE WRONG PROGRAM
 var app = builder.Build();
 
-app.UseRouting();
+app.ConfigureApp();
 
-app.UseAuthorization();
-
-app.UseHttpsRedirection();
-
-app.MapControllers();
-
-if (app.Environment.IsDevelopment())
-{
-  app.UseSwagger();
-  app.UseSwaggerUI();
-}
-
+// STOP, THIS IS THE WRONG PROGRAM
 app.Run();

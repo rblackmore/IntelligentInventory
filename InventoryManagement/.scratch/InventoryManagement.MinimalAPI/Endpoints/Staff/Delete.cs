@@ -25,7 +25,7 @@ public class Delete : EndpointBaseAsync
     this.repository = repository;
   }
 
-  [HttpDelete("staff/{id}")]
+  [HttpDelete("api/staff/{id}")]
   [SwaggerOperation(
     Summary = "Delete Staff by Id",
     Description = "Delete Staff by Id",

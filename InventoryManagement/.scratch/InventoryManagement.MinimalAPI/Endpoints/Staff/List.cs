@@ -24,7 +24,7 @@ public class List : EndpointBaseAsync
     this.repository = repository;
   }
 
-  [HttpGet("staff")]
+  [HttpGet("api/staff")]
   [SwaggerOperation(
     Summary = "Get all Staff",
     Description = "Get all Staff",

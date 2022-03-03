@@ -26,7 +26,7 @@ public class Update : EndpointBaseAsync
     this.repository = repository;
   }
 
-  [HttpPut("staff/{id:guid}")]
+  [HttpPut("api/staff/{id:guid}")]
   [SwaggerOperation(
     Summary = "Update Staff",
     Description = "Update Staff",

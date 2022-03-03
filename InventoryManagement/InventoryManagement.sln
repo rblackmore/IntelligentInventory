@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Infrast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.MinimalAPI", ".scratch\InventoryManagement.MinimalAPI\InventoryManagement.MinimalAPI.csproj", "{ADEAE082-7C38-4A0C-9913-50527BD3D748}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.API", "src\InventoryManagement.API\InventoryManagement.API.csproj", "{C437F7B0-F423-46F4-9755-9A0C09CB146E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{ADEAE082-7C38-4A0C-9913-50527BD3D748}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADEAE082-7C38-4A0C-9913-50527BD3D748}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADEAE082-7C38-4A0C-9913-50527BD3D748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C437F7B0-F423-46F4-9755-9A0C09CB146E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C437F7B0-F423-46F4-9755-9A0C09CB146E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C437F7B0-F423-46F4-9755-9A0C09CB146E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C437F7B0-F423-46F4-9755-9A0C09CB146E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{CD29B843-B0C8-41F6-B182-D23603632209} = {DDA143AF-177A-4819-9631-F9107C4BD5DC}
 		{12C6BA38-5BBE-4D90-9445-050E031DBCD3} = {DDA143AF-177A-4819-9631-F9107C4BD5DC}
 		{ADEAE082-7C38-4A0C-9913-50527BD3D748} = {23D01995-41D7-49E9-9093-94F79CD4BAE1}
+		{C437F7B0-F423-46F4-9755-9A0C09CB146E} = {DDA143AF-177A-4819-9631-F9107C4BD5DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B73B37E9-0910-4C17-9927-1463D168D48B}
