@@ -14,7 +14,7 @@ public static class Startup
   /// <summary>
   /// Initializes app with services, logging and request pipline.
   /// </summary>
-  /// <param name="args">Application arguments.</param>
+  /// <param name="args">Application Arguments.</param>
   /// <returns><see cref="WebApplication"/> ready for running.</returns>
   public static WebApplication InitializeApp(string[] args)
   {
@@ -59,7 +59,11 @@ public static class Startup
       options.UseSqlServer(
         connString,
         sqlOptions => sqlOptions.MigrationsAssembly(migrationAssembly.FullName));
+
+      if (builder.Environment.IsDevelopment())
+        options.EnableSensitiveDataLogging();
     });
+
     return builder;
   }
 

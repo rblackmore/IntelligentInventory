@@ -1,5 +1,25 @@
 ﻿using InventoryManagement.API;
 
-var app = Startup.InitializeApp(args);
+using Serilog;
 
-app.Run();
+Log.Logger = new LoggerConfiguration()
+  .MinimumLevel.Debug()
+  .WriteTo.Console()
+  .CreateLogger();
+
+try
+{
+  Log.Debug("Startup Application");
+
+  var app = Startup.InitializeApp(args);
+
+  app.Run();
+}
+catch (Exception ex)
+{
+  Log.Fatal(ex, "Unhandled Exception, something went Terribly Wrong");
+}
+finally
+{
+  Log.CloseAndFlush();
+}
