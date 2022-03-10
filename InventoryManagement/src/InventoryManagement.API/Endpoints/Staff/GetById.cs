@@ -28,7 +28,7 @@ public class GetById : EndpointBaseAsync
 
   [HttpGet("api/staff/{id:guid}")]
   [SwaggerOperation(
-    Summary = "Staff By Id(guid)",
+    Summary = "Staff By Id (guid)",
     Description = "Get Staff by Id (guid)",
     OperationId = "Staff.GetById",
     Tags = new[] { "StaffEndpoints" })]

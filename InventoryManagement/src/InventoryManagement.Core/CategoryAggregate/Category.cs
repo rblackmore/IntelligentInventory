@@ -26,7 +26,7 @@ public class Category : Entity<CategoryId>, IAggregateRoot
     // EF.
   }
 
-  public CategoryName CategoryName { get; private set; }
+  public CategoryName CategoryName { get; set; }
 
   private IEnumerable<Product> Products { get; } = Enumerable.Empty<Product>();
 }
