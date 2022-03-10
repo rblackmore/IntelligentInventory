@@ -88,9 +88,9 @@ Intelligent Inventory is a very simple inventory management system built used to
 ## Roadmap
 
 - [ ] Inventory Management
-    - [ ] Core Domain
+    - [X] Core Domain
     - [ ] Infrastructure
-    - [ ] Application
+    - [ ] Application [Not Applicable]
     - [ ] API
 - [ ] ItemBooker
     - [ ] Core Domain
@@ -100,10 +100,13 @@ Intelligent Inventory is a very simple inventory management system built used to
 - [ ] Web Front End
     - [ ] Features to Be Decided
 
-<!-- See the [open issues](https://github.com/rblackmore/IntelligentInventory/issues) for a full list of proposed features (and known issues). -->
+## Know Issues
+
+#### Inventory Management
+###### Infrastructure
+  - [ ] CategoryId Has no Value generator, this should be resolved by database generation.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
