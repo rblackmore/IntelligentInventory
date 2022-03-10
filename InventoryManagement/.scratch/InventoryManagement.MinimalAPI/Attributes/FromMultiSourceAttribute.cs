@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 /// <summary>
 /// Attribute that allows a composite object to provide data from multiple HTTP Sources.
 /// Eg. [FromQuery] and [FromBody].
+/// From a Nick Chapsas Video I think.
 /// </summary>
 public class FromMultiSourceAttribute : Attribute, IBindingSourceMetadata
 {

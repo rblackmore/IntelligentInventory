@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Ardalis.ApiEndpoints;
+using Ardalis.GuardClauses;
 
 using IntelligentInventory.SharedKernel.Interfaces;
 
@@ -17,29 +18,31 @@ using Swashbuckle.AspNetCore.Annotations;
 
 public class List : EndpointBaseAsync
   .WithoutRequest
-  .WithResult<List<StaffDTO>>
+  .WithActionResult<List<ListStaffDTO>>
 {
   private readonly IReadRepository<Staff> repository;
 
   public List(IReadRepository<Staff> repository)
   {
-    this.repository = repository;
+    this.repository = Guard.Against.Null(repository, nameof(repository));
   }
 
   [HttpGet("api/staff")]
   [SwaggerOperation(
-    Summary = "Staf List",
+    Summary = "List Staff",
     Description = "Gets a list of all Staff Members",
     OperationId = "Staff.List",
-    Tags = new[] { "StaffEndpoints "})]
-  public override async Task<List<StaffDTO>> HandleAsync(CancellationToken ct = default)
+    Tags = new[] { "StaffEndpoints" })]
+  public override async Task<ActionResult<List<ListStaffDTO>>> HandleAsync(
+    CancellationToken cancellationToken = default)
   {
-    var staffList = await this.repository.ListAsync(ct);
+    var entities = await this.repository.ListAsync(cancellationToken);
 
-    var response = staffList.Select(s => new StaffDTO(s.Id.Value, s.Name.FirstName, s.Name.LastName));
+    var response = entities
+      .Select(s => new ListStaffDTO(s.Id.Value, s.Name.FirstName, s.Name.LastName));
 
-    return response.ToList();
+    return this.Ok(response.ToList());
   }
 }
 
-public record StaffDTO(Guid Id, string FirstName, string LastName);
+public record ListStaffDTO(Guid Id, string FirstName, string LastName);
