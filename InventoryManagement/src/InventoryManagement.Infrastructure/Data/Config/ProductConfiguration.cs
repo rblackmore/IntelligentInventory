@@ -1,7 +1,7 @@
 ﻿namespace InventoryManagement.Infrastructure.Data.Config;
 
-using InventoryManagement.Core.ManufacturerAggregate;
-using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using InventoryManagement.Core.ProductAggregate;
+using InventoryManagement.Core.ProductAggregate.ValueObjects;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

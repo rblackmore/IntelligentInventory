@@ -24,6 +24,7 @@ public class Update : EndpointBaseAsync
   {
     this.repository = repository;
   }
+
   [HttpPut("api/categories")]
   [SwaggerOperation(
   Summary = "Update Category",

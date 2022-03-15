@@ -6,7 +6,7 @@ using IntelligentInventory.SharedKernel.BaseClasses;
 using IntelligentInventory.SharedKernel.Interfaces;
 
 using InventoryManagement.Core.CategoryAggregate.ValueObjects;
-using InventoryManagement.Core.ManufacturerAggregate;
+using InventoryManagement.Core.ProductAggregate;
 
 public class Category : Entity<CategoryId>, IAggregateRoot
 {

@@ -36,4 +36,8 @@
     <ProjectReference Include="..\InventoryManagement.Infrastructure\InventoryManagement.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Endpoints\Manufacturers\" />
+  </ItemGroup>
+
 </Project>

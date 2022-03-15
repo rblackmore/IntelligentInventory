@@ -1,4 +1,4 @@
-﻿namespace InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+﻿namespace InventoryManagement.Core.ProductAggregate.ValueObjects;
 
 using Ardalis.GuardClauses;
 
@@ -8,6 +8,6 @@ public class ProductId : SingleValueObject<int, ProductId>
 {
   protected override void Validate()
   {
-    Guard.Against.NegativeOrZero(this.Value, nameof(this.Value));
+    Guard.Against.NegativeOrZero(Value, nameof(Value));
   }
 }

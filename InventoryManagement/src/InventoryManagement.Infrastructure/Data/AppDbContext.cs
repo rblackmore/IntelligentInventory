@@ -8,7 +8,9 @@ using IntelligentInventory.SharedKernel.BaseClasses;
 using IntelligentInventory.SharedKernel.Interfaces;
 
 using InventoryManagement.Core.CategoryAggregate;
+using InventoryManagement.Core.ItemAggregate;
 using InventoryManagement.Core.ManufacturerAggregate;
+using InventoryManagement.Core.ProductAggregate;
 using InventoryManagement.Core.StaffAggregate;
 
 using MediatR;

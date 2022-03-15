@@ -1,4 +1,4 @@
-﻿namespace InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+﻿namespace InventoryManagement.Core.ItemAggregate.ValueObjects;
 
 using System.Collections.Generic;
 
@@ -10,7 +10,7 @@ public class DateCode : ValueObject
 {
   public DateCode(string value)
   {
-    this.Value = Guard.Against.NullOrEmpty(value, nameof(value));
+    Value = Guard.Against.NullOrEmpty(value, nameof(value));
   }
 
   public string Value { get; }
@@ -21,11 +21,11 @@ public class DateCode : ValueObject
 
   public override string ToString()
   {
-    return this.Value;
+    return Value;
   }
 
   protected override IEnumerable<object> GetEqualityComponents()
   {
-    yield return this.Value;
+    yield return Value;
   }
 }

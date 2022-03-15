@@ -1,15 +1,18 @@
-﻿namespace InventoryManagement.Core.ManufacturerAggregate;
+﻿namespace InventoryManagement.Core.ProductAggregate;
 
 using Ardalis.GuardClauses;
 
 using IntelligentInventory.SharedKernel.BaseClasses;
 using IntelligentInventory.SharedKernel.Guards;
+using IntelligentInventory.SharedKernel.Interfaces;
 
 using InventoryManagement.Core.CategoryAggregate;
-using InventoryManagement.Core.ManufacturerAggregate.Enums;
+using InventoryManagement.Core.ItemAggregate;
 using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using InventoryManagement.Core.ProductAggregate.Enums;
+using InventoryManagement.Core.ProductAggregate.ValueObjects;
 
-public class Product : Entity<ProductId>
+public class Product : Entity<ProductId>, IAggregateRoot
 {
   private readonly List<Item> items = new();
 
@@ -23,16 +26,16 @@ public class Product : Entity<ProductId>
     Frequency frequency = null!)
     : base(productid)
   {
-    this.Manufacturer_id = Guard.Against.Null(manufacturer_id, nameof(manufacturer_id));
-    this.Description = Guard.Against.Null(description, nameof(description));
-    this.ProductCode = Guard.Against.Null(productCode, nameof(productCode));
-    this.Frequency = frequency ?? Frequency.None;
+    Manufacturer_id = Guard.Against.Null(manufacturer_id, nameof(manufacturer_id));
+    Description = Guard.Against.Null(description, nameof(description));
+    ProductCode = Guard.Against.Null(productCode, nameof(productCode));
+    Frequency = frequency ?? Frequency.None;
   }
 
   public Product(ProductId productid, ManufacturerId manufacturer_id)
   : base(productid)
   {
-    this.Manufacturer_id = Guard.Against.Null(manufacturer_id, nameof(manufacturer_id));
+    Manufacturer_id = Guard.Against.Null(manufacturer_id, nameof(manufacturer_id));
   }
 
   private Product()
@@ -48,25 +51,25 @@ public class Product : Entity<ProductId>
 
   public Frequency Frequency { get; private set; } = Frequency.None;
 
-  public IReadOnlyList<Item> Items => this.items.AsReadOnly();
+  public IReadOnlyList<Item> Items => items.AsReadOnly();
 
-  public IReadOnlyList<Category> Categories => this.categories.AsReadOnly();
+  public IReadOnlyList<Category> Categories => categories.AsReadOnly();
 
   public void AddItem(Item newItem)
   {
     Guard.Against.Null(newItem, nameof(newItem));
 
-    this.items.Add(newItem);
+    items.Add(newItem);
   }
 
   public void SetProductCode(ProductCode productCode)
   {
-    this.ProductCode = Guard.Against.Null(productCode, nameof(productCode));
+    ProductCode = Guard.Against.Null(productCode, nameof(productCode));
   }
 
   public void SetDescription(string description)
   {
-    this.Description = Guard.Against.Null(description, nameof(description));
+    Description = Guard.Against.Null(description, nameof(description));
   }
 
   public void AddCategories(params Category[] categories)

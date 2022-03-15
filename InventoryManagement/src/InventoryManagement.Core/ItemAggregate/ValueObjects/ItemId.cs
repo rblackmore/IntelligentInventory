@@ -1,4 +1,4 @@
-﻿namespace InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+﻿namespace InventoryManagement.Core.ItemAggregate.ValueObjects;
 
 using Ardalis.GuardClauses;
 
@@ -8,7 +8,7 @@ public class ItemId : SingleValueObject<Guid, ItemId>
 {
   protected override void Validate()
   {
-    Guard.Against.Default(this.Value, nameof(this.Value));
+    Guard.Against.Default(Value, nameof(Value));
   }
 
   public static new ItemId New()

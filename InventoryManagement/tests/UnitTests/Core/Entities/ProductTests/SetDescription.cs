@@ -1,11 +1,14 @@
 ﻿namespace UnitTests.Core.Entities.ProductTests;
 
-using Xunit;
-using AutoFixture;
-using FluentAssertions;
 using System;
+
 using AutoFixture.Xunit2;
-using InventoryManagement.Core.ManufacturerAggregate;
+
+using FluentAssertions;
+
+using InventoryManagement.Core.ProductAggregate;
+
+using Xunit;
 
 public class SetDescription
 {

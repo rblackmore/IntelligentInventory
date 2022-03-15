@@ -8,15 +8,15 @@ using AutoFixture.Xunit2;
 
 using FluentAssertions;
 
-using InventoryManagement.Core.ManufacturerAggregate;
-using InventoryManagement.Core.ManufacturerAggregate.Enums;
 using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using InventoryManagement.Core.ProductAggregate;
+using InventoryManagement.Core.ProductAggregate.Enums;
+using InventoryManagement.Core.ProductAggregate.ValueObjects;
 
 using Xunit;
 
 public class Construction
 {
-
   [Theory]
   [AutoData]
   public void CreateSuccess_AndAssignsValues(

@@ -8,8 +8,9 @@ using AutoFixture.Xunit2;
 
 using FluentAssertions;
 
-using InventoryManagement.Core.ManufacturerAggregate;
-using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using InventoryManagement.Core.ItemAggregate;
+using InventoryManagement.Core.ItemAggregate.ValueObjects;
+using InventoryManagement.Core.ProductAggregate.ValueObjects;
 
 using Xunit;
 
@@ -79,7 +80,6 @@ public class Construction
   public void Throws_ArgumentNullException_When_SerialNumberIsNull()
   {
     // Arrange
-
     var create = () => new Item(
       this.itemId,
       null!,

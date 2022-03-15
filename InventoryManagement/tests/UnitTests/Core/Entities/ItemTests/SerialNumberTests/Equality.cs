@@ -4,7 +4,7 @@ using AutoFixture.Xunit2;
 
 using FluentAssertions;
 
-using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using InventoryManagement.Core.ItemAggregate.ValueObjects;
 
 using Xunit;
 
@@ -19,7 +19,6 @@ public class Equality
     var obj2 = new SerialNumber(serialNumber);
 
     // Assert.
-
     obj1.Should().NotBeSameAs(obj2);
     obj1.Should().Be(obj2);
     obj2.Should().Be(obj1);

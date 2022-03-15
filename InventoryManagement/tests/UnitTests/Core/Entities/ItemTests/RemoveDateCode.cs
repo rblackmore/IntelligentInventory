@@ -5,8 +5,8 @@ using AutoFixture.Xunit2;
 
 using FluentAssertions;
 
-using InventoryManagement.Core.ManufacturerAggregate;
-using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using InventoryManagement.Core.ItemAggregate;
+using InventoryManagement.Core.ItemAggregate.ValueObjects;
 
 using Xunit;
 

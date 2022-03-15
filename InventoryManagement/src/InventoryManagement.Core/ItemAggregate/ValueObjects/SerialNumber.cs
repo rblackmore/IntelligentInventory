@@ -1,4 +1,4 @@
-﻿namespace InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+﻿namespace InventoryManagement.Core.ItemAggregate.ValueObjects;
 
 using System.Collections.Generic;
 
@@ -10,13 +10,13 @@ public class SerialNumber : ValueObject
 {
   public SerialNumber(string value)
   {
-    this.Value = Guard.Against.NullOrEmpty(value, nameof(value));
+    Value = Guard.Against.NullOrEmpty(value, nameof(value));
   }
 
   public string Value { get; }
 
   protected override IEnumerable<object> GetEqualityComponents()
   {
-    yield return this.Value;
+    yield return Value;
   }
 }

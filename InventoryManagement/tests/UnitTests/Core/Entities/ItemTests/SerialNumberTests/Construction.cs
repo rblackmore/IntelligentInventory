@@ -6,7 +6,7 @@ using AutoFixture.Xunit2;
 
 using FluentAssertions;
 
-using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using InventoryManagement.Core.ItemAggregate.ValueObjects;
 
 using Xunit;
 
@@ -24,7 +24,7 @@ public class Construction
   [Fact]
   public void Throws_ArgumentException_GivenEmptyString()
   {
-    var create = () => new SerialNumber(String.Empty);
+    var create = () => new SerialNumber(string.Empty);
 
     create.Should().Throw<ArgumentException>();
   }

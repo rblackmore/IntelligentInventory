@@ -6,6 +6,7 @@ using IntelligentInventory.SharedKernel.BaseClasses;
 using IntelligentInventory.SharedKernel.Interfaces;
 
 using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
+using InventoryManagement.Core.ProductAggregate;
 
 public class Manufacturer : Entity<ManufacturerId>, IAggregateRoot
 {
