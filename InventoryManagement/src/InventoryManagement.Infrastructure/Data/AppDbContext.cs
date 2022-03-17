@@ -16,7 +16,6 @@ using InventoryManagement.Core.StaffAggregate;
 using MediatR;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
 
 public sealed class AppDbContext : DbContext
@@ -43,8 +42,6 @@ public sealed class AppDbContext : DbContext
 
   public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
   {
-    this.LogChanges();
-
     var result = await base.SaveChangesAsync(cancellationToken);
 
     await this.HandleDomainEvents(cancellationToken).ConfigureAwait(false);
@@ -90,12 +87,5 @@ public sealed class AppDbContext : DbContext
         await this.mediator.Publish(domainEvent, cancellationToken).ConfigureAwait(false);
       }
     }
-  }
-
-  private void LogChanges()
-  {
-    var trackedEntities = this.ChangeTracker.Entries();
-
-    this.logger.LogDebug("Changed Entity Count: {count}", trackedEntities.Count());
   }
 }
