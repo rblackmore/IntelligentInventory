@@ -38,6 +38,12 @@ public class Product : Entity<ProductId>, IAggregateRoot
     Manufacturer_id = Guard.Against.Null(manufacturer_id, nameof(manufacturer_id));
   }
 
+  public Product(ManufacturerId manufacturer_id)
+    : base(new ProductId())
+  {
+
+  }
+
   private Product()
   {
     // EF Core.

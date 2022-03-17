@@ -50,7 +50,7 @@ namespace InventoryManagement.API.Migrations
                     b.ToTable("Categories", (string)null);
                 });
 
-            modelBuilder.Entity("InventoryManagement.Core.ManufacturerAggregate.Item", b =>
+            modelBuilder.Entity("InventoryManagement.Core.ItemAggregate.Item", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -68,7 +68,10 @@ namespace InventoryManagement.API.Migrations
             modelBuilder.Entity("InventoryManagement.Core.ManufacturerAggregate.Manufacturer", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -83,7 +86,7 @@ namespace InventoryManagement.API.Migrations
                     b.ToTable("Manufacturers", (string)null);
                 });
 
-            modelBuilder.Entity("InventoryManagement.Core.ManufacturerAggregate.Product", b =>
+            modelBuilder.Entity("InventoryManagement.Core.ProductAggregate.Product", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -120,7 +123,7 @@ namespace InventoryManagement.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InventoryManagement.Core.ManufacturerAggregate.Product", null)
+                    b.HasOne("InventoryManagement.Core.ProductAggregate.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -155,15 +158,15 @@ namespace InventoryManagement.API.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("InventoryManagement.Core.ManufacturerAggregate.Item", b =>
+            modelBuilder.Entity("InventoryManagement.Core.ItemAggregate.Item", b =>
                 {
-                    b.HasOne("InventoryManagement.Core.ManufacturerAggregate.Product", null)
+                    b.HasOne("InventoryManagement.Core.ProductAggregate.Product", null)
                         .WithMany("Items")
                         .HasForeignKey("Product_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("InventoryManagement.Core.ManufacturerAggregate.ValueObjects.DateCode", "DateCode", b1 =>
+                    b.OwnsOne("InventoryManagement.Core.ItemAggregate.ValueObjects.DateCode", "DateCode", b1 =>
                         {
                             b1.Property<Guid>("ItemId")
                                 .HasColumnType("uniqueidentifier");
@@ -181,7 +184,7 @@ namespace InventoryManagement.API.Migrations
                                 .HasForeignKey("ItemId");
                         });
 
-                    b.OwnsOne("InventoryManagement.Core.ManufacturerAggregate.ValueObjects.SerialNumber", "SerialNumber", b1 =>
+                    b.OwnsOne("InventoryManagement.Core.ItemAggregate.ValueObjects.SerialNumber", "SerialNumber", b1 =>
                         {
                             b1.Property<Guid>("ItemId")
                                 .HasColumnType("uniqueidentifier");
@@ -206,7 +209,7 @@ namespace InventoryManagement.API.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("InventoryManagement.Core.ManufacturerAggregate.Product", b =>
+            modelBuilder.Entity("InventoryManagement.Core.ProductAggregate.Product", b =>
                 {
                     b.HasOne("InventoryManagement.Core.ManufacturerAggregate.Manufacturer", null)
                         .WithMany("Products")
@@ -214,7 +217,7 @@ namespace InventoryManagement.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("InventoryManagement.Core.ManufacturerAggregate.Enums.Frequency", "Frequency", b1 =>
+                    b.OwnsOne("InventoryManagement.Core.ProductAggregate.Enums.Frequency", "Frequency", b1 =>
                         {
                             b1.Property<int>("ProductId")
                                 .HasColumnType("int");
@@ -235,7 +238,7 @@ namespace InventoryManagement.API.Migrations
                                 .HasForeignKey("ProductId");
                         });
 
-                    b.OwnsOne("InventoryManagement.Core.ManufacturerAggregate.ValueObjects.ProductCode", "ProductCode", b1 =>
+                    b.OwnsOne("InventoryManagement.Core.ProductAggregate.ValueObjects.ProductCode", "ProductCode", b1 =>
                         {
                             b1.Property<int>("ProductId")
                                 .HasColumnType("int");
@@ -297,7 +300,7 @@ namespace InventoryManagement.API.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("InventoryManagement.Core.ManufacturerAggregate.Product", b =>
+            modelBuilder.Entity("InventoryManagement.Core.ProductAggregate.Product", b =>
                 {
                     b.Navigation("Items");
                 });

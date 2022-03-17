@@ -17,6 +17,7 @@ public class Category : Entity<CategoryId>, IAggregateRoot
   }
 
   public Category(CategoryName categoryName)
+    : base(new CategoryId())
   {
     this.CategoryName = Guard.Against.Null(categoryName, nameof(categoryName));
   }

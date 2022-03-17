@@ -5,9 +5,9 @@ using Ardalis.Specification;
 
 using InventoryManagement.Core.ManufacturerAggregate.ValueObjects;
 
-internal class ManufacturerByIdIncludeProducts : Specification<Manufacturer>, ISingleResultSpecification
+public class ManufacturerByIdIncludeProductsSpec : Specification<Manufacturer>, ISingleResultSpecification
 {
-  public ManufacturerByIdIncludeProducts(ManufacturerId manufacturerId, int pageNo, int pageSize)
+  public ManufacturerByIdIncludeProductsSpec(ManufacturerId manufacturerId)
   {
     this.Query
       .Where(m => m.Id == manufacturerId)

@@ -17,7 +17,7 @@ try
 }
 catch (Exception ex)
 {
-  Log.Fatal(ex, "Unhandled Exception, something went Terribly Wrong");
+  //Log.Fatal(ex, "Unhandled Exception, something went Terribly Wrong");
 }
 finally
 {

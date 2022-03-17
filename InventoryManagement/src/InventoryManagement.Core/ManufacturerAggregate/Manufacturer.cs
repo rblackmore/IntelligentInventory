@@ -15,6 +15,7 @@ public class Manufacturer : Entity<ManufacturerId>, IAggregateRoot
   public Manufacturer(
     string name,
     string description)
+    : base (new ManufacturerId())
   {
     this.Name = name;
     this.Description = description;

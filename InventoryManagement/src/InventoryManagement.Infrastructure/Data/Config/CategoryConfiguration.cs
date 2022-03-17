@@ -4,6 +4,7 @@ using InventoryManagement.Core.CategoryAggregate;
 using InventoryManagement.Core.CategoryAggregate.ValueObjects;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 public class CategoryConfiguration : IEntityTypeConfiguration<Category>
@@ -16,7 +17,8 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
       .ValueGeneratedOnAdd()
       .HasConversion(
       v => v.Value,
-      v => CategoryId.From(v));
+      v => CategoryId.From(v))
+      .Metadata.SetBeforeSaveBehavior(PropertySaveBehavior.Ignore);
 
     builder.OwnsOne(x => x.CategoryName, x =>
     {

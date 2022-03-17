@@ -4,6 +4,7 @@ using InventoryManagement.Core.ProductAggregate;
 using InventoryManagement.Core.ProductAggregate.ValueObjects;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 public class ProductConfiguration : IEntityTypeConfiguration<Product>
@@ -13,7 +14,10 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
     builder.ToTable("Products").HasKey(x => x.Id);
 
     builder.Property(x => x.Id)
-      .HasConversion(v => v.Value, v => ProductId.From(v));
+      .HasConversion(
+        v => v.Value,
+        v => ProductId.From(v))
+      .Metadata.SetBeforeSaveBehavior(PropertySaveBehavior.Ignore);
 
     builder.OwnsOne(x => x.ProductCode, x =>
     {
