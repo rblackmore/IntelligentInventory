@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using Swashbuckle.AspNetCore.Annotations;
 
-public class Update : MultiSourceBaseEndpointAsync
+public class Update : MultiSourceEndpointBaseAsync
   .WithRequest<int, UpdateManufacturerRequestDTO>
   .WithActionResult<UpdateManufacturerResponseDTO>
 {

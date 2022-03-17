@@ -8,6 +8,7 @@ using Ardalis.GuardClauses;
 
 using IntelligentInventory.SharedKernel.Interfaces;
 
+using InventoryManagement.API.BaseEndpoints;
 using InventoryManagement.Core.StaffAggregate;
 using InventoryManagement.Core.StaffAggregate.ValueObjects;
 
@@ -15,9 +16,9 @@ using Microsoft.AspNetCore.Mvc;
 
 using Swashbuckle.AspNetCore.Annotations;
 
-public class Update : EndpointBaseAsync
-  .WithRequest<UpdateStaffDTO>
-  .WithActionResult<UpdateStaffDTO>
+public class Update : MultiSourceEndpointBaseAsync
+  .WithRequest<Guid, UpdateStaffRequestDTO>
+  .WithActionResult<UpdateStaffResponsefDTO>
 {
   private readonly IRepository<Staff> repository;
 
@@ -26,26 +27,27 @@ public class Update : EndpointBaseAsync
     this.repository = Guard.Against.Null(repository, nameof(repository));
   }
 
-  [HttpPut("api/staff")]
+  [HttpPut("api/staff/{id:guid}")]
   [SwaggerOperation(
   Summary = "Update Staff",
   Description = "Update Existing Staff Member",
   OperationId = "Staff.Update",
   Tags = new[] { "StaffEndpoints" })]
-  public override async Task<ActionResult<UpdateStaffDTO>> HandleAsync(
-    UpdateStaffDTO request,
+  public override async Task<ActionResult<UpdateStaffResponsefDTO>> HandleAsync(
+    Guid id,
+    UpdateStaffRequestDTO dto,
     CancellationToken cancellationToken = default)
   {
-    var entity = await this.repository.GetByIdAsync(StaffId.From(request.Id));
+    var entity = await this.repository.GetByIdAsync(StaffId.From(id));
 
     if (entity is null)
       return this.NotFound();
 
-    entity.Name = new Name(request.FirstName, request.LastName);
+    entity.Name = new Name(dto.FirstName, dto.LastName);
 
     await this.repository.UpdateAsync(entity, cancellationToken);
 
-    var response = new UpdateStaffDTO(
+    var response = new UpdateStaffResponsefDTO(
       entity.Id.Value,
       entity.Name.FirstName,
       entity.Name.LastName);
@@ -54,7 +56,5 @@ public class Update : EndpointBaseAsync
   }
 }
 
-public record UpdateStaffDTO(
-  Guid Id,
-  string FirstName,
-  string LastName);
+public record UpdateStaffRequestDTO(string FirstName, string LastName);
+public record UpdateStaffResponsefDTO(Guid Id, string FirstName, string LastName);

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 /// Alternative BaseEndpointAsync class for use with multiple souce requests objects.
 /// Can be use for up to 4 request objects.
 /// </summary>
-public static class MultiSourceBaseEndpointAsync
+public static class MultiSourceEndpointBaseAsync
 {
   public static class WithRequest<TRequest1, TRequest2>
   {
