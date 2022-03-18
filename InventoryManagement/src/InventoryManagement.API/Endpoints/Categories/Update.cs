@@ -3,8 +3,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using Ardalis.ApiEndpoints;
-
 using IntelligentInventory.SharedKernel.Interfaces;
 
 using InventoryManagement.API.BaseEndpoints;

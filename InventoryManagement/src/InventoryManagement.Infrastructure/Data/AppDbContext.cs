@@ -16,18 +16,15 @@ using InventoryManagement.Core.StaffAggregate;
 using MediatR;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 public sealed class AppDbContext : DbContext
 {
   private readonly IMediator mediator;
-  private readonly ILogger<AppDbContext> logger;
 
-  public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator, ILogger<AppDbContext> logger)
+  public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator)
     : base(options)
   {
     this.mediator = mediator;
-    this.logger = logger;
   }
 
   public DbSet<Staff> Staff { get; set; }
