@@ -17,7 +17,8 @@ try
 }
 catch (Exception ex)
 {
-  //Log.Fatal(ex, "Unhandled Exception, something went Terribly Wrong");
+  // Removed since this throws when setting up EF Core Migrations.
+  // Log.Fatal(ex, "Unhandled Exception, something went Terribly Wrong");
 }
 finally
 {
