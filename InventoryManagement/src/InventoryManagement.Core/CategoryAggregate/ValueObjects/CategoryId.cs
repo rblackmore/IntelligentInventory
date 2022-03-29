@@ -10,6 +10,6 @@ public class CategoryId : SingleValueObject<int, CategoryId>
 {
   protected override void Validate()
   {
-    //Guard.Against.NegativeOrZero(this.Value, nameof(this.Value));
+    Guard.Against.Negative(this.Value, nameof(this.Value));
   }
 }

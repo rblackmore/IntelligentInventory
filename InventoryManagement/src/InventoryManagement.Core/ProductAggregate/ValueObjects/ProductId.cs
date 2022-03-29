@@ -8,6 +8,6 @@ public class ProductId : SingleValueObject<int, ProductId>
 {
   protected override void Validate()
   {
-    Guard.Against.NegativeOrZero(Value, nameof(Value));
+    Guard.Against.Negative(this.Value, nameof(this.Value));
   }
 }
