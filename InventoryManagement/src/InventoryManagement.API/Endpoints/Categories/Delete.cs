@@ -36,7 +36,7 @@ public class Delete : EndpointBaseAsync
     int id,
     CancellationToken cancellationToken = default)
   {
-    var entity = await this.repository.GetByIdAsync(CategoryId.From(id));
+    var entity = await this.repository.GetByIdAsync(id);
 
     if (entity is null)
       return this.NotFound();

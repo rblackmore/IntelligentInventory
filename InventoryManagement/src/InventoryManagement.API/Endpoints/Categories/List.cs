@@ -37,7 +37,7 @@ public class List : EndpointBaseAsync
     var entities = await this.repository.ListAsync(cancellationToken);
 
     var response = entities
-      .Select(e => new ListCategoryDTO(e.Id.Value, e.CategoryName.Name));
+      .Select(e => new ListCategoryDTO(e.Id, e.CategoryName.Name));
 
     return this.Ok(response.ToList());
   }

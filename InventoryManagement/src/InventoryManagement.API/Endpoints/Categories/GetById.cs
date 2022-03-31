@@ -36,13 +36,13 @@ public class GetById : EndpointBaseAsync
     int id,
     CancellationToken cancellationToken = default)
   {
-    var entity = await this.repository.GetByIdAsync(CategoryId.From(id));
+    var entity = await this.repository.GetByIdAsync(id, cancellationToken);
 
     if (entity is null)
       return this.NotFound();
 
     var response = new GetCategoryByIdResponseDTO(
-      entity.Id.Value,
+      entity.Id,
       entity.CategoryName.Name);
 
     return this.Ok(response);

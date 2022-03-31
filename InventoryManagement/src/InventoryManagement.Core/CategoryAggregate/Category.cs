@@ -8,16 +8,15 @@ using IntelligentInventory.SharedKernel.Interfaces;
 using InventoryManagement.Core.CategoryAggregate.ValueObjects;
 using InventoryManagement.Core.ProductAggregate;
 
-public class Category : Entity<CategoryId>, IAggregateRoot
+public class Category : Entity<int>, IAggregateRoot
 {
-  public Category(CategoryId categoryId, CategoryName categoryName)
+  public Category(int categoryId, CategoryName categoryName)
     : base(categoryId)
   {
     this.CategoryName = Guard.Against.Null(categoryName, nameof(categoryName));
   }
 
   public Category(CategoryName categoryName)
-    : base(new CategoryId())
   {
     this.CategoryName = Guard.Against.Null(categoryName, nameof(categoryName));
   }

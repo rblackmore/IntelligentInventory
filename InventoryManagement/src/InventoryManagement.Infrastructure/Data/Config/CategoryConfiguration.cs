@@ -13,13 +13,6 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
   {
     builder.ToTable("Categories").HasKey(c => c.Id);
 
-    builder.Property(x => x.Id)
-      .ValueGeneratedOnAdd()
-      .HasConversion(
-        v => v.Value,
-        v => CategoryId.From(v))
-      .Metadata.SetBeforeSaveBehavior(PropertySaveBehavior.Ignore);
-
     builder.OwnsOne(x => x.CategoryName, x =>
     {
       x.Property(x => x.Name)

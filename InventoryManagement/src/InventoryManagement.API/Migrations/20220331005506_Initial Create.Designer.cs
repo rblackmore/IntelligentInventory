@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventoryManagement.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220316024417_Initial Create")]
+    [Migration("20220331005506_Initial Create")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,7 +91,10 @@ namespace InventoryManagement.API.Migrations
             modelBuilder.Entity("InventoryManagement.Core.ProductAggregate.Product", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
                         .IsRequired()

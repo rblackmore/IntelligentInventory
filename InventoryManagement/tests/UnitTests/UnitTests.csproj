@@ -16,6 +16,8 @@
     <PackageReference Include="AutoFixture.Xunit2" Version="4.17.0" />
     <PackageReference Include="FluentAssertions" Version="6.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.406">
@@ -38,6 +40,7 @@
     <Folder Include="Core\Entities\ManufacturerTests\" />
     <Folder Include="Core\Entities\ProductTests\FrequencyTests\" />
     <Folder Include="Core\Entities\ProductTests\ProductCodeTests\" />
+    <Folder Include="Infrastructure\RepositoryTests\ConcreteImplementations\" />
   </ItemGroup>
 
   <ItemGroup>

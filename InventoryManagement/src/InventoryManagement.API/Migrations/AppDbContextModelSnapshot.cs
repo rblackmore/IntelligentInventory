@@ -89,7 +89,10 @@ namespace InventoryManagement.API.Migrations
             modelBuilder.Entity("InventoryManagement.Core.ProductAggregate.Product", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
                         .IsRequired()

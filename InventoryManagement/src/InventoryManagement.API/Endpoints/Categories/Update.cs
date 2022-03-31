@@ -35,7 +35,7 @@ public class Update : MultiSourceEndpointBaseAsync
     UpdateCategoryRequestDTO request,
     CancellationToken cancellationToken = default)
   {
-    var entity = await this.repository.GetByIdAsync(CategoryId.From(id), cancellationToken);
+    var entity = await this.repository.GetByIdAsync(id, cancellationToken);
 
     if (entity is null)
       return this.NotFound();
@@ -45,7 +45,7 @@ public class Update : MultiSourceEndpointBaseAsync
     await this.repository.UpdateAsync(entity, cancellationToken);
 
     var response = new UpdateCategoryResponseDTO(
-      entity.Id.Value,
+      entity.Id,
       entity.CategoryName.Name);
 
     return this.Ok(response);

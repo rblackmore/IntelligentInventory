@@ -41,7 +41,7 @@ public class Create : EndpointBaseAsync
     await this.repository.AddAsync(newEntity);
 
     var response = new CreateCategoryResponseDTO(
-      newEntity.Id.Value,
+      newEntity.Id,
       newEntity.CategoryName.Name);
 
     return this.Created(response.Id.ToString(), response);
