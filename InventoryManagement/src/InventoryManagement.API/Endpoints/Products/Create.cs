@@ -33,7 +33,7 @@ public class Create : EndpointBaseAsync
     Summary = "Create Product",
     Description = "Create New Product",
     OperationId = "Products.Create",
-    Tags = new[] { "ProductEndppoints" })]
+    Tags = new[] { "ProductEndpoints" })]
   public override async Task<ActionResult<CreateProductResponseDTO>> HandleAsync(
     CreateProductRequestDTO request,
     CancellationToken cancellationToken = default)
@@ -44,7 +44,7 @@ public class Create : EndpointBaseAsync
       new ProductCode(request.ProductCode),
       Frequency.FromName(request.Frequency));
 
-    await this.repository.AddAsync(newEntity);
+    await this.repository.AddAsync(newEntity, cancellationToken);
 
     var response = new CreateProductResponseDTO(
       newEntity.Id.Value,

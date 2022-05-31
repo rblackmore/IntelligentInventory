@@ -1,5 +1,7 @@
 ﻿namespace Test.Infrastructure;
 
+using System.Threading.Tasks;
+
 using AutoFixture;
 
 using InventoryManagement.Core.CategoryAggregate;
@@ -31,15 +33,20 @@ public class TestDatabaseFixture
 
         SpecimenFixture.Customizations.Add(new CategorySpecimenBuilder());
 
-        var categories = SpecimenFixture.CreateMany<Category>(10);
-
-        context.Categories.AddRange(categories);
-
-        context.SaveChanges();
+        this.SeedAsync(context).GetAwaiter();
       }
 
       initialized = true;
     }
+  }
+
+  private async Task SeedAsync(AppDbContext context)
+  {
+    var categories = SpecimenFixture.CreateMany<Category>(10);
+
+    context.Categories.AddRange(categories);
+
+    await context.SaveChangesAsync();
   }
 
   public static Fixture SpecimenFixture { get; } = new Fixture();

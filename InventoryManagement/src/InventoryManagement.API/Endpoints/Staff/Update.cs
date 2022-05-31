@@ -34,8 +34,8 @@ public class Update : MultiSourceEndpointBaseAsync
   OperationId = "Staff.Update",
   Tags = new[] { "StaffEndpoints" })]
   public override async Task<ActionResult<UpdateStaffResponsefDTO>> HandleAsync(
-    Guid id,
-    UpdateStaffRequestDTO dto,
+    [FromRoute] Guid id,
+    [FromBody] UpdateStaffRequestDTO requestDTO,
     CancellationToken cancellationToken = default)
   {
     var entity = await this.repository.GetByIdAsync(StaffId.From(id));
@@ -43,7 +43,7 @@ public class Update : MultiSourceEndpointBaseAsync
     if (entity is null)
       return this.NotFound();
 
-    entity.Name = new Name(dto.FirstName, dto.LastName);
+    entity.Name = new Name(requestDTO.FirstName, requestDTO.LastName);
 
     await this.repository.UpdateAsync(entity, cancellationToken);
 

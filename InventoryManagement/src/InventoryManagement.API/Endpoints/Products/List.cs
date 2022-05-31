@@ -31,14 +31,14 @@ public class List : EndpointBaseAsync
     Summary = "Get All Products",
     Description = "Get All Products Paginated",
     OperationId = "Products.List",
-    Tags = new[] { "ProductEndppoints" })]
+    Tags = new[] { "ProductEndpoints" })]
   public override async Task<ActionResult<List<ProductListResponseDTO>>> HandleAsync(
     [FromQuery] ProductListRequestDTO request,
     CancellationToken cancellationToken = default)
   {
-    var entityCount = await this.repository.CountAsync();
+    var entityCount = await this.repository.CountAsync(cancellationToken);
 
-    var pageCount = (int)Math.Ceiling((double)(entityCount / request.PageSize));
+    var pageCount = (int)Math.Ceiling((double)(entityCount / request.PageSize)) + 1;
 
     var pageNo = request.PageNo > pageCount ? pageCount
                  : request.PageNo < 1 ? 1
