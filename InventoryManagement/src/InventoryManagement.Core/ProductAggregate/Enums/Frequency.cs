@@ -24,4 +24,6 @@ public class Frequency : SmartEnum<Frequency>
   }
 
   public string Description { get; set; }
+
+  
 }

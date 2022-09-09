@@ -1,6 +1,7 @@
 ﻿namespace InventoryManagement.Infrastructure.Data.Config;
 
 using InventoryManagement.Core.ProductAggregate;
+using InventoryManagement.Core.ProductAggregate.Enums;
 using InventoryManagement.Core.ProductAggregate.ValueObjects;
 
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,12 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
       x.Property(x => x.Value)
         .HasColumnName("Frequency")
         .IsRequired();
+
+      x.Property(x => x.Name)
+      .HasColumnName("Frequency_Name");
+
+      x.Property(x => x.Description)
+      .HasColumnName("Frequency_Description");
     });
 
     builder.HasMany(x => x.Items)
