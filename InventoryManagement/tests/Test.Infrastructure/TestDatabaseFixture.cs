@@ -14,7 +14,7 @@ using Test.Infrastructure.SpecimenBuilders;
 public class TestDatabaseFixture
 {
   private const string ConnectionString =
-    "Server=localhost;Database=IntelligentInventory.Infrastructure.Tests;User Id=sa;Password=Passw0rd123";
+    "Server=localhost;Database=IntelligentInventory.Infrastructure.Tests;User Id=sa;Password=p@55w0rd;MultipleActiveresultSets=True";
 
   private static readonly object Locked = new();
   private static bool initialized;

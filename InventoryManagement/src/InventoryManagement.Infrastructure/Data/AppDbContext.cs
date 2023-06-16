@@ -12,6 +12,7 @@ using InventoryManagement.Core.ItemAggregate;
 using InventoryManagement.Core.ManufacturerAggregate;
 using InventoryManagement.Core.ProductAggregate;
 using InventoryManagement.Core.StaffAggregate;
+using InventoryManagement.Infrastructure.Data.Config;
 
 using MediatR;
 
@@ -27,15 +28,15 @@ public sealed class AppDbContext : DbContext
     this.mediator = mediator;
   }
 
-  public DbSet<Staff> Staff { get; set; }
+  public DbSet<Staff>? Staff { get; set; }
 
-  public DbSet<Category> Categories { get; set; }
+  public DbSet<Category>? Categories { get; set; }
 
-  public DbSet<Manufacturer> Manufacturers { get; set; }
+  public DbSet<Manufacturer>? Manufacturers { get; set; }
 
-  public DbSet<Product> Products { get; set; }
+  public DbSet<Product>? Products { get; set; }
 
-  public DbSet<Item> Items { get; set; }
+  public DbSet<Item>? Items { get; set; }
 
   public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
   {
@@ -55,7 +56,7 @@ public sealed class AppDbContext : DbContext
   {
     base.OnModelCreating(modelBuilder);
 
-    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(StaffConfiguration))!);
 
     modelBuilder.Ignore<DomainEvent>();
   }
@@ -68,7 +69,7 @@ public sealed class AppDbContext : DbContext
     var entitiesWithEvents = this.ChangeTracker
           .Entries()
           .Select(e => e.Entity as IEntity)
-          .Where(e => e != null && e.Events != null && e.Events.Any())
+          .Where(e => e is not null && e.Events is not null && e.Events.Any())
           .ToArray();
 
     foreach (var entity in entitiesWithEvents)

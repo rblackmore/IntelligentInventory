@@ -24,13 +24,13 @@ public class Create : EndpointBaseAsync
   {
     this.repository = repository;
   }
+
   [HttpPost("/api/categories")]
   [SwaggerOperation(
     Summary = "Create Category",
     Description = "Create and Add New Category",
     OperationId = "Categories.Create",
-    Tags = new[] { "CategoryEndpoints" }
-    )]
+    Tags = new[] { "CategoryEndpoints" })]
   public override async Task<CreateCategoryResponse> HandleAsync(
     CreateCategoryRequest request,
     CancellationToken cancellationToken = default)
@@ -39,7 +39,7 @@ public class Create : EndpointBaseAsync
 
     await this.repository.AddAsync(category);
 
-    return new CreateCategoryResponse(category.Id.Value, category.CategoryName.Name);
+    return new CreateCategoryResponse(category.Id, category.CategoryName.Name);
   }
 }
 
